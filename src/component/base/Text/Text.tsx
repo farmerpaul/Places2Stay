@@ -6,14 +6,17 @@ import {
   TextStyle as RNTextStyle,
 } from 'react-native';
 
-export type TextVariant = 'title' | 'body' | 'muted';
+export type TextVariant = 'title' | 'body' | 'bodyMuted';
 
 export type Props = RNTextProps & {
   style?: RNTextStyle;
   variant?: TextVariant;
 };
 
-const variantStyles = StyleSheet.create({
+const styles = StyleSheet.create({
+  base: {
+    color: '#000',
+  },
   title: {
     fontSize: 24,
     lineHeight: 28.8,
@@ -22,7 +25,7 @@ const variantStyles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 15,
   },
-  muted: {
+  bodyMuted: {
     fontSize: 12,
     lineHeight: 15,
     color: '#858585',
@@ -30,7 +33,9 @@ const variantStyles = StyleSheet.create({
 });
 
 const Text: React.FC<Props> = ({variant = 'body', style, children}) => {
-  return <RNText style={[variantStyles[variant], style]}>{children}</RNText>;
+  return (
+    <RNText style={[styles.base, styles[variant], style]}>{children}</RNText>
+  );
 };
 
 export default Text;

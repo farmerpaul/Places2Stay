@@ -65,7 +65,7 @@ const SectionHeader: React.FC<Props> = ({
       <Text variant="body" style={styles.title}>
         {title}
       </Text>
-      {!!subtitle && <Text variant="muted">{subtitle}</Text>}
+      {!!subtitle && <Text variant="bodyMuted">{subtitle}</Text>}
     </View>
   );
 };
