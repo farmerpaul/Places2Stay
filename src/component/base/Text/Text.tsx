@@ -1,12 +1,24 @@
 import React from 'react';
-import {Text as RNText, TextStyle} from 'react-native';
+import {StyleSheet, Text as RNText, TextStyle} from 'react-native';
 
 export type Props = {
   style?: TextStyle;
+  variant?: 'title' | 'body';
 };
 
-const Text: React.FC<Props> = ({style, children}) => {
-  return <RNText style={style}>{children}</RNText>;
+const variantStyles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    lineHeight: 28.8,
+  },
+  body: {
+    fontSize: 12,
+    lineHeight: 15,
+  },
+});
+
+const Text: React.FC<Props> = ({variant = 'body', style, children}) => {
+  return <RNText style={[variantStyles[variant], style]}>{children}</RNText>;
 };
 
 export default Text;

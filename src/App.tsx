@@ -9,20 +9,31 @@
 
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
-import {Text} from '/component/base';
+import SectionHeader from '/screen/Home/component/SectionHeader';
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFF1D2',
+    flex: 1,
+  },
+  inner: {
+    paddingVertical: 16,
+  },
+});
 
 const App = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <ScrollView
-      //contentInsetAdjustmentBehavior="automatic"
-      >
-        <Text>Hello MetaLab</Text>
+        //contentInsetAdjustmentBehavior="automatic"
+        style={styles.inner}>
+        <SectionHeader
+          title="Find your getaway"
+          paragraph="Our spaces are designed for comfort – whether you are working, relaxing, or craving some spaces"
+        />
       </ScrollView>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
