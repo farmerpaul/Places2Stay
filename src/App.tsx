@@ -9,6 +9,7 @@
 
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import PlaceCta from '/screen/Home/component/PlaceCta';
 import SectionHeader from '/screen/Home/component/SectionHeader';
 
 const styles = StyleSheet.create({
@@ -30,6 +31,18 @@ const App = () => {
         <SectionHeader
           title="Find your getaway"
           paragraph="Our spaces are designed for comfort – whether you are working, relaxing, or craving some spaces"
+        />
+        <PlaceCta
+          imageSource={require('/asset/images/cta-placeholder.jpg')}
+          imageLabel="From $126"
+          title="408 St. Jacques | 1 Br"
+          subtitle="Old Montreal, Montreal"
+        />
+        <PlaceCta
+          imageSource={require('/asset/images/cta-placeholder.jpg')}
+          imageLabel="From $126"
+          title="408 St. Jacques | 1 Br"
+          subtitle="Old Montreal, Montreal"
         />
       </ScrollView>
     </SafeAreaView>

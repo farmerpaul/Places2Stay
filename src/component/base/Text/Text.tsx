@@ -1,9 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text as RNText, TextStyle} from 'react-native';
+import {
+  StyleSheet,
+  Text as RNText,
+  TextProps as RNTextProps,
+  TextStyle as RNTextStyle,
+} from 'react-native';
 
-export type Props = {
-  style?: TextStyle;
-  variant?: 'title' | 'body';
+export type TextVariant = 'title' | 'body' | 'muted';
+
+export type Props = RNTextProps & {
+  style?: RNTextStyle;
+  variant?: TextVariant;
 };
 
 const variantStyles = StyleSheet.create({
@@ -14,6 +21,11 @@ const variantStyles = StyleSheet.create({
   body: {
     fontSize: 12,
     lineHeight: 15,
+  },
+  muted: {
+    fontSize: 12,
+    lineHeight: 15,
+    color: '#858585',
   },
 });
 

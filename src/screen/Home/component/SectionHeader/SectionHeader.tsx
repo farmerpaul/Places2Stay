@@ -11,21 +11,17 @@ export type Props = {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 50,
-  },
-  title: {
-    marginBottom: 7,
+    marginBottom: 8,
   },
   paragraph: {
-    marginBottom: 16,
+    marginTop: 8,
   },
 });
 
 const SectionHeader: React.FC<Props> = ({style, title, paragraph}) => {
   return (
-    <View style={[style, styles.container]}>
-      <Text variant="title" style={styles.title}>
-        {title}
-      </Text>
+    <View style={[styles.container, style]}>
+      <Text variant="title">{title}</Text>
       <Text variant="body" style={styles.paragraph}>
         {paragraph}
       </Text>
