@@ -1,7 +1,7 @@
 import React from 'react';
 import {
+  FlatList,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   TextInput,
   View,
@@ -10,12 +10,14 @@ import {PlaceCta, SectionHeader} from './component';
 import IconHome from '/asset/svg/icon-home.svg';
 import IconCalendar from '/asset/svg/icon-calendar.svg';
 
+import {Place} from './Home.types';
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF1D2',
     flex: 1,
   },
-  scrollView: {
+  list: {
     paddingTop: 36,
     paddingBottom: 16,
     marginTop: -16,
@@ -55,6 +57,33 @@ const styles = StyleSheet.create({
 });
 
 const Home: React.FC = () => {
+  const items: Array<Place> = [
+    {
+      title: '408 St. Jacques | 1 Br',
+      location: 'Old Montreal, Montreal',
+      imageSource: require('/asset/images/cta-placeholder.jpg'),
+      price: 126,
+    },
+    {
+      title: '408 St. Jacques | 1 Br',
+      location: 'Old Montreal, Montreal',
+      imageSource: require('/asset/images/cta-placeholder.jpg'),
+      price: 126,
+    },
+    {
+      title: '408 St. Jacques | 1 Br',
+      location: 'Old Montreal, Montreal',
+      imageSource: require('/asset/images/cta-placeholder.jpg'),
+      price: 126,
+    },
+    {
+      title: '408 St. Jacques | 1 Br',
+      location: 'Old Montreal, Montreal',
+      imageSource: require('/asset/images/cta-placeholder.jpg'),
+      price: 126,
+    },
+  ];
+
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -63,24 +92,24 @@ const Home: React.FC = () => {
           placeholderTextColor="#858585"
           style={styles.searchInput}
         />
-        <ScrollView style={styles.scrollView}>
-          <SectionHeader
-            title="Find your getaway"
-            paragraph="Our spaces are designed for comfort – whether you are working, relaxing, or craving some spaces"
-          />
-          <PlaceCta
-            imageSource={require('/asset/images/cta-placeholder.jpg')}
-            imageLabel="From $126"
-            title="408 St. Jacques | 1 Br"
-            subtitle="Old Montreal, Montreal"
-          />
-          <PlaceCta
-            imageSource={require('/asset/images/cta-placeholder.jpg')}
-            imageLabel="From $126"
-            title="408 St. Jacques | 1 Br"
-            subtitle="Old Montreal, Montreal"
-          />
-        </ScrollView>
+        <FlatList<Place>
+          style={styles.list}
+          data={items}
+          ListHeaderComponent={
+            <SectionHeader
+              title="Find your getaway"
+              paragraph="Our spaces are designed for comfort – whether you are working, relaxing, or craving some spaces"
+            />
+          }
+          renderItem={({item: {imageSource, price, title, location}}) => (
+            <PlaceCta
+              imageSource={imageSource}
+              imageLabel={`From $${price}`}
+              title={title}
+              subtitle={location}
+            />
+          )}
+        />
       </SafeAreaView>
       <View style={styles.navBar}>
         <View style={styles.navBarButton}>
