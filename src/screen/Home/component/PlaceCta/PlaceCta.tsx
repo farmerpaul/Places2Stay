@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {Text} from '/component/base';
+import {colors} from '/theme/colors';
 
 export type Props = {
   style?: StyleProp<ViewStyle>;
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: '#FFA500',
+    backgroundColor: colors.deepYellow,
     borderBottomLeftRadius: 8,
   },
   image: {

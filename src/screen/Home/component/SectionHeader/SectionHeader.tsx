@@ -11,7 +11,7 @@ export type Props = {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 50,
-    marginTop: 8,
+    marginTop: 12,
     marginBottom: 20,
   },
   paragraph: {
