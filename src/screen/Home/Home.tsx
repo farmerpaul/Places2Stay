@@ -8,18 +8,18 @@ import {
   View,
 } from 'react-native';
 import {PlaceCta, SectionHeader} from './component';
-import IconHome from '/asset/svg/icon-home.svg';
-import IconCalendar from '/asset/svg/icon-calendar.svg';
 import data from '/fixtures/homeData';
 import Carousel from 'react-native-snap-carousel';
 import CityCta from '/screen/Home/component/CityCta';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors} from '/theme/colors';
+import Icon from '/component/base/Icon';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.yellow,
     flex: 1,
+    color: colors.black,
   },
   list: {
     flex: 1,
@@ -139,10 +139,10 @@ const Home: React.FC = () => {
       </SafeAreaView>
       <View style={styles.navBar}>
         <View style={styles.navBarButton}>
-          <IconHome />
+          <Icon svg={require('/asset/svg/icon-home.svg')} />
         </View>
         <View style={styles.navBarButton}>
-          <IconCalendar />
+          <Icon svg={require('/asset/svg/icon-calendar.svg')} />
         </View>
       </View>
     </>
