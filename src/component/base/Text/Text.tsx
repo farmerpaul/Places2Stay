@@ -7,17 +7,18 @@ import {
 } from 'react-native';
 import {colors} from '/theme/colors';
 
-export type TextVariant = 'title' | 'body' | 'bodyMuted';
-
 export type Props = RNTextProps & {
   style?: RNTextStyle;
   variant?: TextVariant;
+  color?: keyof typeof colors;
 };
+
+export type TextVariant = keyof typeof styles;
 
 const styles = StyleSheet.create({
   base: {
-    color: colors.black,
     fontFamily: 'EncodeSans-Regular',
+    fontSize: 16,
   },
   title: {
     fontFamily: 'Bitter-Regular',
@@ -28,16 +29,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 15,
   },
-  bodyMuted: {
-    fontSize: 12,
-    lineHeight: 15,
-    color: colors.muted,
-  },
 });
 
-const Text: React.FC<Props> = ({variant = 'body', style, children}) => {
+const Text: React.FC<Props> = ({
+  variant = 'body',
+  color = 'black',
+  style,
+  children,
+}) => {
   return (
-    <RNText style={[styles.base, styles[variant], style]}>{children}</RNText>
+    <RNText
+      style={[styles.base, styles[variant], {color: colors[color]}, style]}>
+      {children}
+    </RNText>
   );
 };
 

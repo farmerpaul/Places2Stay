@@ -7,5 +7,6 @@ export const colors = {
   deepYellow: '#FFA500',
   white: '#FFF',
   black: '#000',
+  blue: '#4169E1',
   muted: '#858585',
 } as const;

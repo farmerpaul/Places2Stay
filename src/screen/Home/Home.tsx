@@ -1,32 +1,27 @@
 import React from 'react';
 import {
   FlatList,
-  SafeAreaView,
   StyleSheet,
   TextInput,
   useWindowDimensions,
   View,
 } from 'react-native';
-import {PlaceCta, SectionHeader} from './component';
-import data from '/fixtures/homeData';
 import Carousel from 'react-native-snap-carousel';
-import CityCta from '/screen/Home/component/CityCta';
 import LinearGradient from 'react-native-linear-gradient';
-import {colors} from '/theme/colors';
-import Icon from '/component/base/Icon';
+
+import data from '/fixtures/homeData';
+import CityCta from '/screen/Home/component/CityCta';
+import {colors, spacing} from '/theme';
+
+import {PlaceCta, SectionHeader} from './component';
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.yellow,
-    flex: 1,
-    color: colors.black,
-  },
   list: {
     flex: 1,
     marginTop: 8,
   },
   searchInput: {
-    marginHorizontal: 44,
+    marginHorizontal: spacing.gutter,
     marginTop: 16,
     padding: 18,
     color: colors.black,
@@ -42,20 +37,6 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 4},
     shadowRadius: 4,
     zIndex: 1,
-  },
-  navBar: {
-    backgroundColor: colors.yellowLight,
-    borderColor: '#E9E5DC',
-    borderTopWidth: 1,
-    paddingTop: 12,
-    paddingBottom: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  navBarButton: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   cityCtaCarousel: {
     paddingBottom: 16,
@@ -83,67 +64,57 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <TextInput
-          placeholder="Try ‘Boston’"
-          placeholderTextColor="#858585"
-          style={styles.searchInput}
+      <TextInput
+        placeholder="Try ‘Boston’"
+        placeholderTextColor="#858585"
+        style={styles.searchInput}
+      />
+      <View style={styles.list}>
+        <FlatList
+          data={data.sections.placeCtas.places}
+          ListHeaderComponent={
+            <SectionHeader
+              title={data.sections.placeCtas.title}
+              paragraph={data.sections.placeCtas.description}
+            />
+          }
+          renderItem={({item}) => (
+            <PlaceCta
+              imageSource={item.image}
+              imageLabel={item.imageLabel}
+              title={item.title}
+              subtitle={item.location}
+            />
+          )}
         />
-        <View style={styles.list}>
-          <FlatList
-            data={data.sections.placeCtas.places}
-            ListHeaderComponent={
-              <SectionHeader
-                title={data.sections.placeCtas.title}
-                paragraph={data.sections.placeCtas.description}
-              />
-            }
-            renderItem={({item}) => (
-              <PlaceCta
-                imageSource={item.image}
-                imageLabel={item.imageLabel}
-                title={item.title}
-                subtitle={item.location}
-              />
-            )}
-          />
-          <LinearGradient
-            colors={[colors.yellow, colors.yellowTransparent]}
-            style={[styles.gradient, styles.gradientTop]}
-          />
-          <LinearGradient
-            colors={[colors.yellowTransparent, colors.yellow]}
-            style={[styles.gradient, styles.gradientBottom]}
-          />
-        </View>
-        <View>
-          <SectionHeader title={data.sections.cityCtas.title} />
-          <Carousel
-            data={data.sections.cityCtas.places}
-            renderItem={({item}) => (
-              <CityCta
-                imageSource={item.image}
-                title={item.title}
-                style={styles.cityCtaSlide}
-              />
-            )}
-            sliderWidth={width}
-            itemWidth={144}
-            activeSlideAlignment="start"
-            inactiveSlideOpacity={1}
-            inactiveSlideScale={1}
-            containerCustomStyle={styles.cityCtaCarousel}
-            removeClippedSubviews={false}
-          />
-        </View>
-      </SafeAreaView>
-      <View style={styles.navBar}>
-        <View style={styles.navBarButton}>
-          <Icon svg={require('/asset/svg/icon-home.svg')} />
-        </View>
-        <View style={styles.navBarButton}>
-          <Icon svg={require('/asset/svg/icon-calendar.svg')} />
-        </View>
+        <LinearGradient
+          colors={[colors.yellow, colors.yellowTransparent]}
+          style={[styles.gradient, styles.gradientTop]}
+        />
+        <LinearGradient
+          colors={[colors.yellowTransparent, colors.yellow]}
+          style={[styles.gradient, styles.gradientBottom]}
+        />
+      </View>
+      <View>
+        <SectionHeader title={data.sections.cityCtas.title} />
+        <Carousel
+          data={data.sections.cityCtas.places}
+          renderItem={({item}) => (
+            <CityCta
+              imageSource={item.image}
+              title={item.title}
+              style={styles.cityCtaSlide}
+            />
+          )}
+          sliderWidth={width}
+          itemWidth={144}
+          activeSlideAlignment="start"
+          inactiveSlideOpacity={1}
+          inactiveSlideScale={1}
+          containerCustomStyle={styles.cityCtaCarousel}
+          removeClippedSubviews={false}
+        />
       </View>
     </>
   );
