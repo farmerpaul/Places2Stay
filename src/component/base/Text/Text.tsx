@@ -5,6 +5,7 @@ import {
   TextProps as RNTextProps,
   TextStyle as RNTextStyle,
 } from 'react-native';
+import {colors} from '/theme/colors';
 
 export type TextVariant = 'title' | 'body' | 'bodyMuted';
 
@@ -15,7 +16,8 @@ export type Props = RNTextProps & {
 
 const styles = StyleSheet.create({
   base: {
-    color: '#000',
+    color: colors.black,
+    fontFamily: 'EncodeSans-Regular',
   },
   title: {
     fontSize: 24,
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
   bodyMuted: {
     fontSize: 12,
     lineHeight: 15,
-    color: '#858585',
+    color: colors.muted,
   },
 });
 
