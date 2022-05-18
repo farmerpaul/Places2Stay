@@ -4,13 +4,15 @@ import {
   SafeAreaView,
   StyleSheet,
   TextInput,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import {PlaceCta, SectionHeader} from './component';
 import IconHome from '/asset/svg/icon-home.svg';
 import IconCalendar from '/asset/svg/icon-calendar.svg';
-
-import {Place} from './Home.types';
+import data from '/fixtures/homeData';
+import Carousel from 'react-native-snap-carousel';
+import CityCta from '/screen/Home/component/CityCta';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   list: {
-    paddingTop: 36,
+    paddingTop: 24,
     paddingBottom: 16,
     marginTop: -16,
   },
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
     borderColor: '#E9E5DC',
     borderTopWidth: 1,
     paddingTop: 12,
-    paddingBottom: 30,
+    paddingBottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -54,35 +56,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  cityCtaCarousel: {
+    minHeight: 200,
+    paddingBottom: 16,
+  },
+  cityCtaSlide: {
+    position: 'relative',
+    left: 50,
+  },
 });
 
 const Home: React.FC = () => {
-  const items: Array<Place> = [
-    {
-      title: '408 St. Jacques | 1 Br',
-      location: 'Old Montreal, Montreal',
-      imageSource: require('/asset/images/cta-placeholder.jpg'),
-      price: 126,
-    },
-    {
-      title: '408 St. Jacques | 1 Br',
-      location: 'Old Montreal, Montreal',
-      imageSource: require('/asset/images/cta-placeholder.jpg'),
-      price: 126,
-    },
-    {
-      title: '408 St. Jacques | 1 Br',
-      location: 'Old Montreal, Montreal',
-      imageSource: require('/asset/images/cta-placeholder.jpg'),
-      price: 126,
-    },
-    {
-      title: '408 St. Jacques | 1 Br',
-      location: 'Old Montreal, Montreal',
-      imageSource: require('/asset/images/cta-placeholder.jpg'),
-      price: 126,
-    },
-  ];
+  const {width} = useWindowDimensions();
 
   return (
     <>
@@ -92,23 +77,41 @@ const Home: React.FC = () => {
           placeholderTextColor="#858585"
           style={styles.searchInput}
         />
-        <FlatList<Place>
+        <FlatList
           style={styles.list}
-          data={items}
+          data={data.sections.placeCtas.places}
           ListHeaderComponent={
             <SectionHeader
-              title="Find your getaway"
-              paragraph="Our spaces are designed for comfort – whether you are working, relaxing, or craving some spaces"
+              title={data.sections.placeCtas.title}
+              paragraph={data.sections.placeCtas.description}
             />
           }
-          renderItem={({item: {imageSource, price, title, location}}) => (
+          renderItem={({item}) => (
             <PlaceCta
-              imageSource={imageSource}
-              imageLabel={`From $${price}`}
-              title={title}
-              subtitle={location}
+              imageSource={item.image}
+              imageLabel={item.imageLabel}
+              title={item.title}
+              subtitle={item.location}
             />
           )}
+        />
+        <SectionHeader title={data.sections.cityCtas.title} />
+        <Carousel
+          data={data.sections.cityCtas.places}
+          renderItem={({item}) => (
+            <CityCta
+              imageSource={item.image}
+              title={item.title}
+              style={styles.cityCtaSlide}
+            />
+          )}
+          sliderWidth={width}
+          itemWidth={144}
+          activeSlideAlignment="start"
+          inactiveSlideOpacity={1}
+          inactiveSlideScale={1}
+          containerCustomStyle={styles.cityCtaCarousel}
+          removeClippedSubviews={false}
         />
       </SafeAreaView>
       <View style={styles.navBar}>

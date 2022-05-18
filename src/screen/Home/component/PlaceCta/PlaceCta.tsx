@@ -19,7 +19,7 @@ export type Props = {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginBottom: 20,
     paddingHorizontal: 50,
   },
   imageContainer: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SectionHeader: React.FC<Props> = ({
+const PlaceCta: React.FC<Props> = ({
   style,
   imageSource,
   imageLabel,
@@ -70,4 +70,4 @@ const SectionHeader: React.FC<Props> = ({
   );
 };
 
-export default SectionHeader;
+export default PlaceCta;
