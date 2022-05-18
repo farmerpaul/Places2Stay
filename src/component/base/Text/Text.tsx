@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     fontFamily: 'EncodeSans-Regular',
   },
   title: {
+    fontFamily: 'Bitter-Regular',
     fontSize: 24,
     lineHeight: 28.8,
   },
