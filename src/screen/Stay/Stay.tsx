@@ -24,7 +24,11 @@ const styles = StyleSheet.create({
 const Stay: React.FC = () => {
   return (
     <ScrollView>
-      <Image source={data.image} style={styles.image} />
+      <Image
+        accessibilityElementsHidden
+        source={data.image}
+        style={styles.image}
+      />
       <View style={styles.container}>
         <Text variant="title">{data.title}</Text>
         <Text color="muted" style={styles.subtitle}>

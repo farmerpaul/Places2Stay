@@ -67,8 +67,9 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: 'absolute',
-    left: spacing.gutter,
-    top: 80,
+    left: spacing.gutter - 10,
+    top: 22,
+    padding: 10,
   },
   closeIcon: {
     width: 24,
@@ -115,16 +116,19 @@ const Modal: React.FC<ModalProps> = ({
       )}
       <SafeAreaView
         style={[styles.modal, fullscreen && styles.modalFullscreen, style]}>
-        <Pressable
-          onPress={closeModal}
-          accessibilityHint="Close modal"
-          style={[styles.closeButton, closeButtonStyle]}>
-          <Image
-            source={require('/asset/images/back.png')}
-            style={styles.closeIcon}
-          />
-        </Pressable>
-        {children}
+        <View>
+          <Pressable
+            onPress={closeModal}
+            accessibilityLabel="Close modal"
+            style={[styles.closeButton, closeButtonStyle]}>
+            <Image
+              accessibilityElementsHidden
+              source={require('/asset/images/back.png')}
+              style={styles.closeIcon}
+            />
+          </Pressable>
+          {children}
+        </View>
       </SafeAreaView>
     </RNModal>
   );

@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
   },
   title: {
     backgroundColor: colors.blue,
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 8,
   },
   ellipsis: {
-    marginRight: 16,
-    marginTop: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
   },
   dataRow: {
     flexDirection: 'row',
@@ -48,7 +49,10 @@ const DataCard: React.FC<DataCardProps> = ({title, data, onPressEllipsis}) => {
           <Text color="white">{title}</Text>
         </View>
         {onPressEllipsis && (
-          <Pressable onPress={onPressEllipsis} style={styles.ellipsis}>
+          <Pressable
+            accessibilityLabel="Actions menu"
+            onPress={onPressEllipsis}
+            style={styles.ellipsis}>
             <Icon
               svg={require('/asset/svg/ellipsis.svg')}
               color={colors.blue}

@@ -32,6 +32,7 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
     return (
       <TextInput
         ref={ref}
+        accessibilityLabel="Search cities"
         placeholder="Try ‘Boston’"
         placeholderTextColor="#858585"
         style={[styles.searchInput, style]}

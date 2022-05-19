@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   },
   gradient: {
     position: 'absolute',
-    left: 0,
-    right: 0,
+    left: spacing.gutter,
+    right: spacing.gutter,
     height: 24,
   },
   gradientTop: {

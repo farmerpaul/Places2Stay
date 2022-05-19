@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
+    paddingVertical: 6,
   },
   optionIcon: {
     marginRight: 8,
