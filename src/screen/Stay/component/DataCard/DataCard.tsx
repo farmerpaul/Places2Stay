@@ -3,7 +3,7 @@ import {Pressable, StyleSheet, View} from 'react-native';
 import {Icon, Text} from '/component/base';
 import {colors} from '/theme';
 
-export type Props = {
+export type DataCardProps = {
   title: string;
   data: Array<{itemLabel: string; itemDetail: string}>;
   onPressEllipsis?: () => void;
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const DataCard: React.FC<Props> = ({title, data, onPressEllipsis}) => {
+const DataCard: React.FC<DataCardProps> = ({title, data, onPressEllipsis}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>

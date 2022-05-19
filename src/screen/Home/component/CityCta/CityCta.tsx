@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {Text} from '/component/base';
 
-export type Props = {
+export type CityCtaProps = {
   style?: StyleProp<ViewStyle>;
   imageSource: ImageSourcePropType;
   title: string;
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CityCta: React.FC<Props> = ({style, imageSource, title}) => {
+const CityCta: React.FC<CityCtaProps> = ({style, imageSource, title}) => {
   return (
     <View style={[styles.container, style]}>
       <Image source={imageSource} style={styles.image} />

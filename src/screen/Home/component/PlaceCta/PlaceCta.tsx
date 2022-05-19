@@ -8,9 +8,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import {Text} from '/component/base';
+import {spacing} from '/theme';
 import {colors} from '/theme/colors';
 
-export type Props = {
+export type PlaceCtaProps = {
   style?: StyleProp<ViewStyle>;
   imageSource: ImageSourcePropType;
   imageLabel?: string;
@@ -21,7 +22,7 @@ export type Props = {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
-    paddingHorizontal: 50,
+    paddingHorizontal: spacing.gutter,
   },
   imageContainer: {
     marginBottom: 8,
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const PlaceCta: React.FC<Props> = ({
+const PlaceCta: React.FC<PlaceCtaProps> = ({
   style,
   imageSource,
   imageLabel,
@@ -66,7 +67,7 @@ const PlaceCta: React.FC<Props> = ({
       <Text variant="body" style={styles.title}>
         {title}
       </Text>
-      {!!subtitle && <Text variant="bodyMuted">{subtitle}</Text>}
+      {!!subtitle && <Text color="muted">{subtitle}</Text>}
     </View>
   );
 };

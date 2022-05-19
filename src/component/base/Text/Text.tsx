@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {colors} from '/theme/colors';
 
-export type Props = RNTextProps & {
+export type TextProps = RNTextProps & {
   style?: RNTextStyle;
   variant?: TextVariant;
   color?: keyof typeof colors;
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Text: React.FC<Props> = ({
+const Text: React.FC<TextProps> = ({
   variant = 'body',
   color = 'black',
   style,

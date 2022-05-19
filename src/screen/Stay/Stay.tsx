@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, View} from 'react-native';
 
-import data from '/fixtures/stayData';
+import data from '../../fixtures/stay';
 import {Text} from '/component/base';
 
 import {DataCard} from './component';

@@ -8,5 +8,6 @@ export const colors = {
   white: '#FFF',
   black: '#000',
   blue: '#4169E1',
+  blueTransparent: hexToRgba('#4169E1', 0),
   muted: '#858585',
 } as const;

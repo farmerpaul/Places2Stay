@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 import {Text} from '/component/base';
+import {spacing} from '/theme';
 
-export type Props = {
+export type SectionHeaderProps = {
   title: string;
   paragraph?: string;
   style?: StyleProp<ViewStyle>;
@@ -10,7 +11,7 @@ export type Props = {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 50,
+    paddingHorizontal: spacing.gutter,
     marginTop: 12,
     marginBottom: 20,
   },
@@ -19,7 +20,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const SectionHeader: React.FC<Props> = ({style, title, paragraph}) => {
+const SectionHeader: React.FC<SectionHeaderProps> = ({
+  style,
+  title,
+  paragraph,
+}) => {
   return (
     <View style={[styles.container, style]}>
       <Text variant="title">{title}</Text>

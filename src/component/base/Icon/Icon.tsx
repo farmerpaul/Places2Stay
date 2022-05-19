@@ -2,7 +2,7 @@ import React from 'react';
 import {SvgProps} from 'react-native-svg';
 import {colors} from '/theme/colors';
 
-export type Props = SvgProps & {
+export type IconProps = SvgProps & {
   /**
    * The SVG file, as a result of calling require('/path/to/file.svg').
    */
@@ -18,7 +18,7 @@ export type Props = SvgProps & {
 /**
  * Assigns default styling to SVGs, color for now.
  */
-const Icon: React.FC<Props> = ({svg, color = colors.black, ...rest}) => {
+const Icon: React.FC<IconProps> = ({svg, color = colors.black, ...rest}) => {
   const Svg = svg.default;
   return <Svg color={color} {...rest} />;
 };

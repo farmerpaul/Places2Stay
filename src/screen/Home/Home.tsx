@@ -1,49 +1,25 @@
-import React from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  TextInput,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, StyleSheet, useWindowDimensions, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
 
-import data from '/fixtures/homeData';
-import CityCta from '/screen/Home/component/CityCta';
+import data from '../../fixtures/home';
 import {colors, spacing} from '/theme';
+import {SearchInput, SearchModal} from '/component/partial';
 
-import {PlaceCta, SectionHeader} from './component';
+import {CityCta, PlaceCta, SectionHeader} from './component';
 
 const styles = StyleSheet.create({
   list: {
     flex: 1,
     marginTop: 8,
   },
-  searchInput: {
-    marginHorizontal: spacing.gutter,
-    marginTop: 16,
-    padding: 18,
-    color: colors.black,
-    backgroundColor: colors.white,
-    textAlign: 'center',
-    fontSize: 16,
-    lineHeight: 20,
-    borderColor: 'rgba(0, 0, 0, 0.19)',
-    borderWidth: 1,
-    borderRadius: 100,
-    shadowColor: colors.black,
-    shadowOpacity: 0.19,
-    shadowOffset: {width: 0, height: 4},
-    shadowRadius: 4,
-    zIndex: 1,
-  },
   cityCtaCarousel: {
     paddingBottom: 16,
   },
   cityCtaSlide: {
     position: 'relative',
-    left: 50,
+    left: spacing.gutter,
   },
   gradient: {
     position: 'absolute',
@@ -61,14 +37,13 @@ const styles = StyleSheet.create({
 
 const Home: React.FC = () => {
   const {width} = useWindowDimensions();
+  const [searchModalVisible, setSearchModalVisible] = useState(false);
+
+  const showSearchModal = () => setSearchModalVisible(true);
 
   return (
     <>
-      <TextInput
-        placeholder="Try ‘Boston’"
-        placeholderTextColor="#858585"
-        style={styles.searchInput}
-      />
+      <SearchInput onKeyPress={showSearchModal} onPressIn={showSearchModal} />
       <View style={styles.list}>
         <FlatList
           data={data.sections.placeCtas.places}
@@ -116,6 +91,10 @@ const Home: React.FC = () => {
           removeClippedSubviews={false}
         />
       </View>
+      <SearchModal
+        visible={searchModalVisible}
+        setVisible={setSearchModalVisible}
+      />
     </>
   );
 };
