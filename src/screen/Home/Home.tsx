@@ -1,5 +1,11 @@
-import React, {useState} from 'react';
-import {FlatList, StyleSheet, useWindowDimensions, View} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {
+  Animated,
+  Easing,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -10,9 +16,21 @@ import {SearchInput, SearchModal} from '/component/partial';
 import {CityCta, PlaceCta, SectionHeader} from './component';
 
 const styles = StyleSheet.create({
+  searchInputContainer: {
+    zIndex: 10,
+    marginTop: 16,
+  },
+  searchInput: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+  },
   list: {
     flex: 1,
-    marginTop: 8,
+    marginTop: 16,
+  },
+  listHeader: {
+    marginTop: 80,
   },
   cityCtaCarousel: {
     paddingBottom: 16,
@@ -27,9 +45,6 @@ const styles = StyleSheet.create({
     right: spacing.gutter,
     height: 24,
   },
-  gradientTop: {
-    top: 0,
-  },
   gradientBottom: {
     bottom: 0,
   },
@@ -39,18 +54,39 @@ const Home: React.FC = () => {
   const {width} = useWindowDimensions();
   const [searchModalVisible, setSearchModalVisible] = useState(false);
 
+  const scrollPosition = useRef(new Animated.Value(0)).current;
+
+  /* Event handlers
+  =================================================== */
   const showSearchModal = () => setSearchModalVisible(true);
 
   return (
     <>
-      <SearchInput onKeyPress={showSearchModal} onPressIn={showSearchModal} />
+      <Animated.View
+        style={[
+          styles.searchInputContainer,
+          {
+            top: scrollPosition.interpolate({
+              inputRange: [0, 32],
+              outputRange: [0, -32],
+              extrapolate: 'clamp',
+            }),
+          },
+        ]}>
+        <SearchInput
+          onKeyPress={showSearchModal}
+          onPressIn={showSearchModal}
+          style={styles.searchInput}
+        />
+      </Animated.View>
       <View style={styles.list}>
-        <FlatList
+        <Animated.FlatList
           data={data.sections.placeCtas.places}
           ListHeaderComponent={
             <SectionHeader
               title={data.sections.placeCtas.title}
               paragraph={data.sections.placeCtas.description}
+              style={styles.listHeader}
             />
           }
           renderItem={({item}) => (
@@ -61,10 +97,10 @@ const Home: React.FC = () => {
               subtitle={item.location}
             />
           )}
-        />
-        <LinearGradient
-          colors={[colors.yellow, colors.yellowTransparent]}
-          style={[styles.gradient, styles.gradientTop]}
+          onScroll={Animated.event(
+            [{nativeEvent: {contentOffset: {y: scrollPosition}}}],
+            {useNativeDriver: false},
+          )}
         />
         <LinearGradient
           colors={[colors.yellowTransparent, colors.yellow]}
