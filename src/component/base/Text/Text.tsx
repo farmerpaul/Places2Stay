@@ -8,9 +8,10 @@ import {
 import {colors} from '/theme/colors';
 
 export type TextProps = RNTextProps & {
-  style?: RNTextStyle;
   variant?: TextVariant;
   color?: keyof typeof colors;
+  textAlign?: 'left' | 'center' | 'right';
+  style?: RNTextStyle;
 };
 
 export type TextVariant = keyof typeof styles;
@@ -34,12 +35,19 @@ const styles = StyleSheet.create({
 const Text: React.FC<TextProps> = ({
   variant = 'body',
   color = 'black',
+  textAlign = 'left',
   style,
   children,
 }) => {
   return (
     <RNText
-      style={[styles.base, styles[variant], {color: colors[color]}, style]}>
+      style={[
+        styles.base,
+        styles[variant],
+        {color: colors[color]},
+        {textAlign},
+        style,
+      ]}>
       {children}
     </RNText>
   );

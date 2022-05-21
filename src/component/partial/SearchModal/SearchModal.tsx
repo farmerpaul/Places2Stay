@@ -3,6 +3,7 @@ import {Pressable, StyleSheet, TextInput, View} from 'react-native';
 
 import {Icon, Modal, Text} from '/component/base';
 import {ModalProps} from '/component/base/Modal/Modal';
+import ToggleInput from '/component/base/ToggleInput';
 import {SearchInput} from '/component/partial';
 import searchMockData from '/fixtures/search';
 import {colors, spacing} from '/theme';
@@ -74,6 +75,8 @@ const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
     setVisible(false);
   };
 
+  const [value, setValue] = useState('something');
+
   return (
     <Modal
       accessibilityLabel="Search for a city"
@@ -91,6 +94,14 @@ const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
         <Text variant="title" style={styles.title}>
           Getaways Near You
         </Text>
+        <ToggleInput
+          options={[
+            {value: 'something', label: 'Something'},
+            {value: 'nothing', label: 'Nothing'},
+          ]}
+          value={value}
+          setValue={setValue}
+        />
         {filteredOptions.map(option => (
           <Pressable
             key={option}

@@ -1,11 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {
-  Animated,
-  Easing,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import {Animated, StyleSheet, useWindowDimensions, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
 
