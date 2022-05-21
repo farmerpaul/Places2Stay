@@ -3,7 +3,6 @@ import {Pressable, StyleSheet, TextInput, View} from 'react-native';
 
 import {Icon, Modal, Text} from '/component/base';
 import {ModalProps} from '/component/base/Modal/Modal';
-import ToggleInput from '/component/base/ToggleInput';
 import {SearchInput} from '/component/partial';
 import searchMockData from '/fixtures/search';
 import {colors, spacing} from '/theme';
@@ -14,10 +13,9 @@ export type Props = ModalProps & {
 
 const styles = StyleSheet.create({
   searchInput: {
-    marginLeft: 72,
-  },
-  container: {
-    marginHorizontal: spacing.gutter,
+    marginTop: -16,
+    marginLeft: 40,
+    marginRight: 0,
   },
   title: {
     marginTop: 24,
@@ -75,8 +73,6 @@ const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
     setVisible(false);
   };
 
-  const [value, setValue] = useState('something');
-
   return (
     <Modal
       accessibilityLabel="Search for a city"
@@ -90,32 +86,22 @@ const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
         onChangeText={setSearchText}
         style={styles.searchInput}
       />
-      <View style={styles.container}>
-        <Text variant="title" style={styles.title}>
-          Getaways Near You
-        </Text>
-        <ToggleInput
-          options={[
-            {value: 'something', label: 'Something'},
-            {value: 'nothing', label: 'Nothing'},
-          ]}
-          value={value}
-          setValue={setValue}
-        />
-        {filteredOptions.map(option => (
-          <Pressable
-            key={option}
-            onPress={() => onSelectItem(option)}
-            style={styles.option}>
-            <Icon
-              svg={require('/asset/svg/map-marker.svg')}
-              color={colors.blue}
-              style={styles.optionIcon}
-            />
-            <Text variant="base">{option}</Text>
-          </Pressable>
-        ))}
-      </View>
+      <Text variant="title" style={styles.title}>
+        Getaways Near You
+      </Text>
+      {filteredOptions.map(option => (
+        <Pressable
+          key={option}
+          onPress={() => onSelectItem(option)}
+          style={styles.option}>
+          <Icon
+            svg={require('/asset/svg/map-marker.svg')}
+            color={colors.blue}
+            style={styles.optionIcon}
+          />
+          <Text variant="base">{option}</Text>
+        </Pressable>
+      ))}
     </Modal>
   );
 };

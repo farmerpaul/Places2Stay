@@ -11,7 +11,7 @@ import React, {useState} from 'react';
 import {Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
 
 import {colors} from '/theme/colors';
-import {Icon} from '/component/base';
+import {Icon, Modal, Text} from '/component/base';
 import {Home, Stay} from '/screen';
 
 // Work around deprecation notices in react-native-snap-carousel module.
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
 
 const App = () => {
   const [screen, setScreen] = useState('home');
+  const [testModalVisible, setTestModalVisible] = useState(false);
 
   return (
     <>
@@ -60,6 +61,43 @@ const App = () => {
           onPress={() => setScreen('stay')}>
           <Icon svg={require('/asset/svg/calendar.svg')} />
         </Pressable>
+        <Pressable
+          style={styles.navBarButton}
+          onPress={() => setTestModalVisible(true)}>
+          <Icon svg={require('/asset/svg/experiment.svg')} />
+        </Pressable>
+        <Modal
+          accessibilityLabel="Test modal"
+          visible={testModalVisible}
+          setVisible={setTestModalVisible}
+          overlayHeading={'What are you\nlooking for?'}
+          title="Test modal">
+          <Text>
+            This is an example of text. Test text here, lots of lines of
+            relevant text.
+          </Text>
+          <Text>
+            Test text here, lots of lines of relevant text. This is an example
+            of text.
+          </Text>
+          <Text>
+            This is an example of text. Test text here, lots of lines of
+            relevant text.
+          </Text>
+          <Text>
+            Test text here, lots of lines of relevant text. This is an example
+            of text.
+          </Text>
+          <Text variant="title">Test modal again</Text>
+          <Text>
+            This is an example of text. Test text here, lots of lines of
+            relevant text.
+          </Text>
+          <Text>
+            Test text here, lots of lines of relevant text. This is an example
+            of text.
+          </Text>
+        </Modal>
       </View>
     </>
   );

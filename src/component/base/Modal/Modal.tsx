@@ -11,6 +11,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {BlurView} from 'expo-blur';
 
 import {colors, spacing} from '/theme';
 import {Text} from '/component/base';
@@ -34,6 +35,10 @@ export type ModalProps = RNModalProps & {
    */
   overlayHeading?: string;
   /**
+   * Title to appear at the top of the modal beside the back button.
+   */
+  title?: string;
+  /**
    * Desription of modal.
    *
    * @default 'Modal'
@@ -48,7 +53,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    opacity: 0.85,
   },
   overlayHeading: {
     paddingVertical: 44,
@@ -60,20 +64,26 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     backgroundColor: colors.yellow,
-    padding: spacing.gutter,
   },
   modalFullscreen: {
     borderRadius: 0,
   },
+  modalInner: {
+    margin: spacing.gutter,
+  },
   closeButton: {
     position: 'absolute',
-    left: spacing.gutter - 10,
-    top: 22,
+    left: -10,
+    top: -10,
     padding: 10,
   },
   closeIcon: {
     width: 24,
     height: 24,
+  },
+  title: {
+    marginHorizontal: 32,
+    marginBottom: 24,
   },
 });
 
@@ -82,6 +92,7 @@ const Modal: React.FC<ModalProps> = ({
   setVisible,
   fullscreen = false,
   overlayHeading,
+  title,
   accessibilityLabel = 'Modal',
   children,
   style,
@@ -101,22 +112,26 @@ const Modal: React.FC<ModalProps> = ({
       {...rest}>
       {!fullscreen && (
         <>
-          <LinearGradient
-            colors={[colors.blue, colors.blueTransparent]}
-            style={styles.overlay}
-          />
+          <BlurView intensity={15} style={styles.overlay}>
+            <LinearGradient
+              colors={[colors.blue, colors.blueTransparent]}
+              style={styles.overlay}
+            />
+          </BlurView>
           {!!overlayHeading && (
-            <View style={styles.overlayHeading}>
-              <Text variant="title" color="white">
-                {overlayHeading}
-              </Text>
-            </View>
+            <SafeAreaView>
+              <View style={styles.overlayHeading}>
+                <Text variant="title" color="white">
+                  {overlayHeading}
+                </Text>
+              </View>
+            </SafeAreaView>
           )}
         </>
       )}
       <SafeAreaView
         style={[styles.modal, fullscreen && styles.modalFullscreen, style]}>
-        <View>
+        <View style={styles.modalInner}>
           <Pressable
             onPress={closeModal}
             accessibilityLabel="Close modal"
@@ -127,6 +142,11 @@ const Modal: React.FC<ModalProps> = ({
               style={styles.closeIcon}
             />
           </Pressable>
+          {!!title && (
+            <Text variant="base" textAlign="center" style={styles.title}>
+              {title}
+            </Text>
+          )}
           {children}
         </View>
       </SafeAreaView>

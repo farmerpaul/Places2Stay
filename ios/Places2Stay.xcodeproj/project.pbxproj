@@ -38,6 +38,8 @@
 		B3A7152F06C14AAFA073F167 /* Bitter-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA8F1AA7CB3407AA603A036 /* Bitter-BoldItalic.ttf */; };
 		B3F0B4FCCB4348E49EF17A3E /* Bitter-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F938AEC06024399AE393C60 /* Bitter-SemiBoldItalic.ttf */; };
 		C05E1737F8954076BB586560 /* Bitter-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45ACB5C444294AF2BC1C219B /* Bitter-ExtraLightItalic.ttf */; };
+		C84C2A6483E4A85345113E23 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168236C004399C9F7FE605F2 /* ExpoModulesProvider.swift */; };
+		DC4BD1E84CC31B51A20103AF /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67E9CC556B39911166C4AC1 /* ExpoModulesProvider.swift */; };
 		E64EB66922EB4E3C837F6B68 /* EncodeSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85F1B159F0674D78A8599F35 /* EncodeSans-Black.ttf */; };
 		E6F9F9F8EE934418912739E4 /* EncodeSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCEFB988D62D479C99975A3A /* EncodeSans-Thin.ttf */; };
 		EEFB498D607F41A9B79A216C /* EncodeSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A0F0911370442C6999F0F91 /* EncodeSans-ExtraLight.ttf */; };
@@ -65,6 +67,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Places2Stay/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Places2Stay/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Places2Stay/main.m; sourceTree = "<group>"; };
+		168236C004399C9F7FE605F2 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Places2Stay-Places2StayTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Places2Stay-Places2StayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Places2Stay-Places2StayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD34030B535415F9846F71F /* Bitter-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Italic.ttf"; path = "../src/asset/fonts/Bitter-Italic.ttf"; sourceTree = "<group>"; };
 		1F938AEC06024399AE393C60 /* Bitter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-SemiBoldItalic.ttf"; path = "../src/asset/fonts/Bitter-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		CB2B42892E2A4FCB8D9F30D8 /* Bitter-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-MediumItalic.ttf"; path = "../src/asset/fonts/Bitter-MediumItalic.ttf"; sourceTree = "<group>"; };
 		CCEFB988D62D479C99975A3A /* EncodeSans-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-Thin.ttf"; path = "../src/asset/fonts/EncodeSans-Thin.ttf"; sourceTree = "<group>"; };
 		CFE1DF15163B4455B06AC5A1 /* EncodeSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-Medium.ttf"; path = "../src/asset/fonts/EncodeSans-Medium.ttf"; sourceTree = "<group>"; };
+		D67E9CC556B39911166C4AC1 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Places2Stay/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		D803C936DB0C48E2AD2F6C93 /* EncodeSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-Bold.ttf"; path = "../src/asset/fonts/EncodeSans-Bold.ttf"; sourceTree = "<group>"; };
 		DE8C3E3BBA3F406D833332EC /* Bitter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Black.ttf"; path = "../src/asset/fonts/Bitter-Black.ttf"; sourceTree = "<group>"; };
 		E42851C35106450DA23CD11E /* EncodeSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-Regular.ttf"; path = "../src/asset/fonts/EncodeSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -135,6 +139,15 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0A685A95EE83611BCA5DD717 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				6221AAB494BDFE9D9C60A956 /* Places2Stay */,
+				FC71229D2FBDC9C955FB769A /* Places2StayTests */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* Places2Stay */ = {
@@ -194,6 +207,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		6221AAB494BDFE9D9C60A956 /* Places2Stay */ = {
+			isa = PBXGroup;
+			children = (
+				D67E9CC556B39911166C4AC1 /* ExpoModulesProvider.swift */,
+			);
+			name = Places2Stay;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +232,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				573B9A9CAC6945EF9747C50E /* Resources */,
+				0A685A95EE83611BCA5DD717 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -235,6 +257,14 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-Places2Stay-Places2StayTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FC71229D2FBDC9C955FB769A /* Places2StayTests */ = {
+			isa = PBXGroup;
+			children = (
+				168236C004399C9F7FE605F2 /* ExpoModulesProvider.swift */,
+			);
+			name = Places2StayTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* Places2StayTests.m in Sources */,
+				C84C2A6483E4A85345113E23 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +559,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				DC4BD1E84CC31B51A20103AF /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +584,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Places2StayTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,6 +595,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Places2Stay.app/Places2Stay";
@@ -576,7 +609,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = Places2StayTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -587,6 +620,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Places2Stay.app/Places2Stay";
@@ -612,6 +646,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.farmerpaul.Places2Stay;
 				PRODUCT_NAME = Places2Stay;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -638,6 +673,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = org.farmerpaul.Places2Stay;
 				PRODUCT_NAME = Places2Stay;
 				SWIFT_VERSION = 5.0;
@@ -694,7 +730,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -758,7 +794,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
