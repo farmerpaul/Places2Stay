@@ -1,15 +1,31 @@
-import React, {useRef, useState} from 'react';
-import {Animated, StyleSheet, useWindowDimensions, View} from 'react-native';
+import React, {useRef} from 'react';
+import {
+  Animated,
+  StatusBar,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
 
 import data from '../../fixtures/home';
 import {colors, spacing} from '/theme';
-import {SearchInput, SearchModal} from '/component/partial';
+import {SearchInput} from '/component/partial';
 
 import {CityCta, PlaceCta, SectionHeader} from './component';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {NavigationProp} from '@react-navigation/native';
+
+export type HomeProps = {
+  navigation: NavigationProp<any, any>;
+};
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.yellow,
+    flex: 1,
+  },
   searchInputContainer: {
     zIndex: 10,
     marginTop: 16,
@@ -38,24 +54,22 @@ const styles = StyleSheet.create({
     left: spacing.gutter,
     right: spacing.gutter,
     height: 24,
-  },
-  gradientBottom: {
     bottom: 0,
   },
 });
 
-const Home: React.FC = () => {
+const Home: React.FC<HomeProps> = ({navigation}) => {
   const {width} = useWindowDimensions();
-  const [searchModalVisible, setSearchModalVisible] = useState(false);
 
   const scrollPosition = useRef(new Animated.Value(0)).current;
 
   /* Event handlers
   =================================================== */
-  const showSearchModal = () => setSearchModalVisible(true);
+  const showSearchModal = () => navigation.navigate('Search');
 
   return (
-    <>
+    <SafeAreaView edges={['top']} style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       <Animated.View
         style={[
           styles.searchInputContainer,
@@ -98,7 +112,7 @@ const Home: React.FC = () => {
         />
         <LinearGradient
           colors={[colors.yellowTransparent, colors.yellow]}
-          style={[styles.gradient, styles.gradientBottom]}
+          style={styles.gradient}
         />
       </View>
       <View>
@@ -121,11 +135,7 @@ const Home: React.FC = () => {
           removeClippedSubviews={false}
         />
       </View>
-      <SearchModal
-        visible={searchModalVisible}
-        setVisible={setSearchModalVisible}
-      />
-    </>
+    </SafeAreaView>
   );
 };
 

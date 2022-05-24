@@ -1,3 +1,3 @@
 export const spacing = {
-  gutter: 32,
+  gutter: 44,
 } as const;

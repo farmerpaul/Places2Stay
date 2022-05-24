@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
+const Search: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
   const inputRef = useRef<TextInput>(null);
   const [searchText, setSearchText] = useState('');
   const options = searchMockData.cities;
@@ -107,4 +107,4 @@ const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
   );
 };
 
-export default SearchModal;
+export default Search;
