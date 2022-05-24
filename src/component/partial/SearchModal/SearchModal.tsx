@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Pressable, StyleSheet, TextInput, View} from 'react-native';
+import {Pressable, StyleSheet, TextInput} from 'react-native';
 
 import {Icon, Modal, Text} from '/component/base';
 import {ModalProps} from '/component/base/Modal/Modal';
 import {SearchInput} from '/component/partial';
 import searchMockData from '/fixtures/search';
-import {colors, spacing} from '/theme';
+import {colors} from '/theme';
 
 export type Props = ModalProps & {
   onSelect?: (value: string) => void;
@@ -76,6 +76,7 @@ const SearchModal: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
   return (
     <Modal
       accessibilityLabel="Search for a city"
+      fullscreen
       onShow={onModalShow}
       onDismiss={onModalDismiss}
       setVisible={setVisible}

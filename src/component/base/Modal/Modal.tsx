@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
+  Animated,
   Image,
   Modal as RNModal,
   ModalProps as RNModalProps,
+  PanResponder,
   Pressable,
   SafeAreaView,
   StyleProp,
@@ -59,8 +61,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.gutter,
     minHeight: 140,
   },
+  animView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
   modal: {
     flex: 1,
+    marginBottom: -40,
+    paddingBottom: 40,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     backgroundColor: colors.yellow,
@@ -70,6 +81,20 @@ const styles = StyleSheet.create({
   },
   modalInner: {
     margin: spacing.gutter,
+  },
+  handle: {
+    position: 'absolute',
+    left: '50%',
+    top: 6,
+    padding: 20,
+    marginTop: -20,
+    marginLeft: -48,
+  },
+  handleInner: {
+    height: 4,
+    width: 56,
+    backgroundColor: colors.grey,
+    borderRadius: 4,
   },
   closeButton: {
     position: 'absolute',
@@ -97,9 +122,60 @@ const Modal: React.FC<ModalProps> = ({
   children,
   style,
   closeButtonStyle,
+  onDismiss,
   ...rest
 }) => {
+  const MAX_POSITION = 150;
   const closeModal = () => setVisible(false);
+  const positionAnim = useRef(new Animated.Value(MAX_POSITION)).current;
+
+  /*
+  TODO: Get this working - using state variable to track current value
+
+  const [position, setPosition] = useState(MAX_POSITION);
+
+  useEffect(() => {
+    positionAnim.addListener(({value}) => {
+      console.log('setting', value);
+      setPosition(value);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  */
+
+  const getPosition = () => {
+    // TODO: Get this working: using state (above) to get current position,
+    // instead of using private property.
+    // return position;
+    return (positionAnim as any)._value;
+  };
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => positionAnim.extractOffset(),
+      onPanResponderMove: (_event, {dy}) => positionAnim.setValue(dy),
+      onPanResponderRelease: () => {
+        positionAnim.flattenOffset();
+
+        Animated.spring(positionAnim, {
+          toValue: Math.min(Math.max(getPosition(), 0), MAX_POSITION),
+          bounciness: 12,
+          speed: 50,
+          useNativeDriver: false,
+        }).start();
+      },
+    }),
+  ).current;
+
+  const togglePosition = () => {
+    Animated.timing(positionAnim, {
+      toValue: getPosition() === 0 ? MAX_POSITION : 0,
+      duration: 250,
+      useNativeDriver: false,
+    }).start();
+  };
 
   return (
     <RNModal
@@ -108,6 +184,10 @@ const Modal: React.FC<ModalProps> = ({
       accessibilityLabel={accessibilityLabel}
       animationType="slide"
       transparent
+      onDismiss={() => {
+        positionAnim.setValue(150);
+        onDismiss?.();
+      }}
       onRequestClose={closeModal}
       {...rest}>
       {!fullscreen && (
@@ -117,37 +197,61 @@ const Modal: React.FC<ModalProps> = ({
               colors={[colors.blue, colors.blueTransparent]}
               style={styles.overlay}
             />
+            {!!overlayHeading && (
+              <SafeAreaView>
+                <View style={styles.overlayHeading}>
+                  <Text variant="title" color="white">
+                    {overlayHeading}
+                  </Text>
+                </View>
+              </SafeAreaView>
+            )}
           </BlurView>
-          {!!overlayHeading && (
-            <SafeAreaView>
-              <View style={styles.overlayHeading}>
-                <Text variant="title" color="white">
-                  {overlayHeading}
-                </Text>
-              </View>
-            </SafeAreaView>
-          )}
         </>
       )}
-      <SafeAreaView
-        style={[styles.modal, fullscreen && styles.modalFullscreen, style]}>
-        <View style={styles.modalInner}>
-          <Pressable
-            onPress={closeModal}
-            accessibilityLabel="Close modal"
-            style={[styles.closeButton, closeButtonStyle]}>
-            <Image
-              accessibilityElementsHidden
-              source={require('/asset/images/back.png')}
-              style={styles.closeIcon}
-            />
-          </Pressable>
-          {!!title && (
-            <Text variant="base" textAlign="center" style={styles.title}>
-              {title}
-            </Text>
-          )}
-          {children}
+      <SafeAreaView style={{flex: 1}}>
+        <View style={{flex: 1}}>
+          <Animated.View
+            style={[
+              styles.animView,
+              !fullscreen && {
+                top: positionAnim,
+              },
+            ]}>
+            <View
+              style={[
+                styles.modal,
+                fullscreen && styles.modalFullscreen,
+                style,
+              ]}>
+              {!fullscreen && (
+                <View {...panResponder.panHandlers}>
+                  <Pressable style={styles.handle} onPress={togglePosition}>
+                    <View style={styles.handleInner} />
+                  </Pressable>
+                </View>
+              )}
+
+              <View style={styles.modalInner}>
+                <Pressable
+                  onPress={closeModal}
+                  accessibilityLabel="Close modal"
+                  style={[styles.closeButton, closeButtonStyle]}>
+                  <Image
+                    accessibilityElementsHidden
+                    source={require('/asset/images/back.png')}
+                    style={styles.closeIcon}
+                  />
+                </Pressable>
+                {!!title && (
+                  <Text variant="base" textAlign="center" style={styles.title}>
+                    {title}
+                  </Text>
+                )}
+                {children}
+              </View>
+            </View>
+          </Animated.View>
         </View>
       </SafeAreaView>
     </RNModal>

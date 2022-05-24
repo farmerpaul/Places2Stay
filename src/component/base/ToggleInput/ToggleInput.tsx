@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 32,
     padding: 6,
-    backgroundColor: colors.grey,
+    backgroundColor: colors.lightGrey,
     flexDirection: 'row',
   },
   optionText: {
