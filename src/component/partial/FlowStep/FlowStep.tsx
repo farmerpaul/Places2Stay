@@ -1,6 +1,7 @@
 import React from 'react';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {colors, spacing} from '/theme';
 import {Icon, Text} from '/component/base';
@@ -11,6 +12,13 @@ export type FlowStepProps = {
    * Title to appear at the top of the modal beside the back button.
    */
   title?: string;
+  /**
+   * Whether to ensure the modal content is within the safe area by using a
+   * SafeAreaView where needed.
+   *
+   * @default false
+   */
+  safeArea?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -38,11 +46,14 @@ const styles = StyleSheet.create({
 const FlowStep: React.FC<FlowStepProps> = ({
   navigation,
   title,
+  safeArea = false,
   style,
   children,
 }) => {
+  const Container = safeArea ? SafeAreaView : View;
+
   return (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <View style={[styles.inner, style]}>
         <Pressable
           onPress={() => navigation.goBack()}
@@ -62,7 +73,7 @@ const FlowStep: React.FC<FlowStepProps> = ({
         )}
         {children}
       </View>
-    </View>
+    </Container>
   );
 };
 

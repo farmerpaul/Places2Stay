@@ -33,6 +33,9 @@ export type ModalProps = RNModalProps & {
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   modal: {
     flex: 1,
     backgroundColor: colors.yellow,
@@ -56,11 +59,10 @@ const Modal: React.FC<ModalProps> = ({
       accessible
       accessibilityLabel={accessibilityLabel}
       animationType="slide"
-      transparent
       onDismiss={onDismiss}
       onRequestClose={closeModal}
       {...rest}>
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={styles.safeArea}>
         <View style={[styles.modal, style]}>{children}</View>
       </SafeAreaView>
     </RNModal>

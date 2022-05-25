@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
 const {Navigator, Screen} = createBottomTabNavigator();
 
 const HomeTabs = () => {
+  /**
+   * Get tab icon for each possible route.
+   */
   const getRouteSvg = (name: string) => {
     switch (name) {
       default:
       case 'Home':
         return require('/asset/svg/home.svg');
-
-      case 'Search':
-        return require('/asset/svg/search.svg');
 
       case 'Stay':
         return require('/asset/svg/calendar.svg');
@@ -50,6 +50,8 @@ const HomeTabs = () => {
     }
   };
 
+  /* Render navigator.
+  =================================================== */
   return (
     <>
       <Navigator

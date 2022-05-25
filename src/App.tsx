@@ -7,9 +7,10 @@
  * @format
  */
 
-// Workaround for deprecation notices in react-native-snap-carousel module.
+// Workaround for deprecation notices in react-native-snap-carousel module:
 import {LogBox} from 'react-native';
 LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
+// ... end workaround.
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
@@ -21,6 +22,7 @@ import {PlacesFilterProvider} from '/context/PlacesFilterContext/PlacesFilterCon
 const {Navigator, Screen} = createNativeStackNavigator();
 
 const App = () => {
+  // Declare filter data store and pass it to the provider below.
   const filterContext = {};
 
   return (
@@ -31,7 +33,10 @@ const App = () => {
           <Screen
             name="SearchStack"
             component={SearchStack}
-            options={{presentation: 'modal'}}
+            options={{
+              presentation: 'fullScreenModal',
+              gestureEnabled: false,
+            }}
           />
         </Navigator>
       </NavigationContainer>

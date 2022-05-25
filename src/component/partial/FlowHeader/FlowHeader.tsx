@@ -11,13 +11,14 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import {colors, spacing} from '/theme';
 import {Text} from '/component/base';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export type FlowHeaderProps = {
   title: string;
 };
 
 const MIN_POSITION = 0;
-const MAX_POSITION = 148;
+const MAX_POSITION = 144;
 
 const styles = StyleSheet.create({
   container: {
@@ -85,7 +86,7 @@ const FlowHeader: React.FC<FlowHeaderProps> = ({title}) => {
     Animated.spring(positionAnim, {
       toValue: newPosition,
       bounciness: 11,
-      speed: 30,
+      speed: 16,
       useNativeDriver: false,
     }).start();
   };
@@ -124,8 +125,14 @@ const FlowHeader: React.FC<FlowHeaderProps> = ({title}) => {
     }),
   ).current;
 
+  /* Render component.
+  =================================================== */
   return (
-    <>
+    <SafeAreaView edges={['top']}>
+      <LinearGradient
+        colors={[colors.blue, colors.white]}
+        style={[styles.overlay, {height: windowHeight}]}
+      />
       <Animated.View
         style={[
           styles.container,
@@ -136,22 +143,28 @@ const FlowHeader: React.FC<FlowHeaderProps> = ({title}) => {
             }),
           },
         ]}>
-        <LinearGradient
-          colors={[colors.blue, colors.white]}
-          style={[styles.overlay, {height: windowHeight}]}
-        />
-        <View style={styles.title}>
+        <Animated.View
+          style={[
+            styles.title,
+            {
+              opacity: positionAnim.interpolate({
+                inputRange: [MIN_POSITION + 40, MAX_POSITION],
+                outputRange: [0, 1],
+                extrapolate: 'clamp',
+              }),
+            },
+          ]}>
           <Text variant="title" color="white">
             {title}
           </Text>
-        </View>
+        </Animated.View>
       </Animated.View>
       <View {...panResponder.panHandlers} style={styles.handleContainer}>
         <Pressable style={styles.handle} onPress={togglePosition}>
           <View style={styles.handleInner} />
         </Pressable>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 

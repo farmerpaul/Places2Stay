@@ -77,7 +77,7 @@ const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
   };
 
   return (
-    <FlowStep navigation={navigation} style={{marginTop: 48}}>
+    <FlowStep navigation={navigation} safeArea>
       <SearchInput
         ref={inputRef}
         value={searchText}

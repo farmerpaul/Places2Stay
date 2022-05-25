@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 28.8,
   },
+  title2: {
+    fontFamily: 'Bitter-Regular',
+    fontSize: 16,
+    lineHeight: 19.2,
+  },
   body: {
     fontSize: 12,
     lineHeight: 15,
