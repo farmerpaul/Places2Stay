@@ -1,14 +1,17 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {RouteProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Pressable, StyleSheet, TextInput} from 'react-native';
 
-import {Icon, Modal, Text} from '/component/base';
-import {ModalProps} from '/component/base/Modal/Modal';
-import {SearchInput} from '/component/partial';
+import {Icon, Text} from '/component/base';
+import {FlowStep, SearchInput} from '/component/partial';
+import {PlacesFilterContext} from '/context';
 import searchMockData from '/fixtures/search';
 import {colors} from '/theme';
 
-export type Props = ModalProps & {
-  onSelect?: (value: string) => void;
+export type SearchCitiesProps = {
+  route: RouteProp<any>;
+  navigation: NativeStackNavigationProp<any>;
 };
 
 const styles = StyleSheet.create({
@@ -31,7 +34,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Search: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
+const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
+  const filterContext = useContext(PlacesFilterContext);
   const inputRef = useRef<TextInput>(null);
   const [searchText, setSearchText] = useState('');
   const options = searchMockData.cities;
@@ -39,6 +43,15 @@ const Search: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
 
   /* Effects
   =================================================== */
+  // Focus and clear search input when screen gains focus.
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      inputRef.current?.focus();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   // Filter list when search text changes.
   useEffect(() => {
     if (searchText) {
@@ -57,30 +70,14 @@ const Search: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
 
   /* Event handlers.
   =================================================== */
-  // Focus search input when modal is displayed.
-  const onModalShow = () => {
-    inputRef.current?.focus();
-  };
-
-  // Clear search text when modal is closed.
-  const onModalDismiss = () => {
-    setSearchText('');
-  };
-
-  // Trigger selection event handler and close modal.
+  // Trigger selection event handler and move to next screen.
   const onSelectItem = (value: string) => {
-    onSelect?.(value);
-    setVisible(false);
+    filterContext.city = value;
+    navigation.push('FilterByType');
   };
 
   return (
-    <Modal
-      accessibilityLabel="Search for a city"
-      fullscreen
-      onShow={onModalShow}
-      onDismiss={onModalDismiss}
-      setVisible={setVisible}
-      {...rest}>
+    <FlowStep navigation={navigation} style={{marginTop: 48}}>
       <SearchInput
         ref={inputRef}
         value={searchText}
@@ -103,8 +100,8 @@ const Search: React.FC<Props> = ({onSelect, setVisible, ...rest}) => {
           <Text variant="base">{option}</Text>
         </Pressable>
       ))}
-    </Modal>
+    </FlowStep>
   );
 };
 
-export default Search;
+export default SearchCities;

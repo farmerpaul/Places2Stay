@@ -9,7 +9,7 @@ export const colors = {
   black: '#000',
   blackTransparent: hexToRgba('#000', 0),
   blue: '#4169E1',
-  blueTransparent: hexToRgba('#4169E1', 0),
+  blueLight: '#65A0FF',
   muted: '#858585',
   greyLight: '#E3E3E3',
   grey: '#8C8C8C',

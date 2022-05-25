@@ -1,11 +1,5 @@
 import React, {useRef} from 'react';
-import {
-  Animated,
-  StatusBar,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import {Animated, StyleSheet, useWindowDimensions, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -65,11 +59,10 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
 
   /* Event handlers
   =================================================== */
-  const showSearchModal = () => navigation.navigate('Search');
+  const showSearchModal = () => navigation.navigate('SearchStack');
 
   return (
     <SafeAreaView edges={['top']} style={styles.container}>
-      <StatusBar barStyle="dark-content" />
       <Animated.View
         style={[
           styles.searchInputContainer,

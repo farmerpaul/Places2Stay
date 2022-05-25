@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, StyleSheet} from 'react-native';
+import {Platform, Pressable, StyleSheet} from 'react-native';
 import {Icon} from '/component/base';
 import {IconProps} from '/component/base/Icon/Icon';
 import {colors} from '/theme';
@@ -13,12 +13,13 @@ const styles = StyleSheet.create({
   pressable: {
     padding: 8,
     backgroundColor: colors.yellow,
+    marginTop: Platform.OS === 'android' ? -12 : 0,
   },
   left: {
-    borderBottomRightRadius: 50,
+    borderBottomRightRadius: 22,
   },
   right: {
-    borderBottomLeftRadius: 50,
+    borderBottomLeftRadius: 22,
   },
 });
 
