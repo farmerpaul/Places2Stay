@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   inner: {
     marginTop: 24,
     marginHorizontal: spacing.gutter,
+    flex: 1,
   },
   backButton: {
     position: 'absolute',
@@ -54,7 +55,7 @@ const FlowStep: React.FC<FlowStepProps> = ({
 
   return (
     <Container style={styles.container}>
-      <View style={[styles.inner, style]}>
+      <SafeAreaView edges={['bottom']} style={[styles.inner, style]}>
         <Pressable
           onPress={() => navigation.goBack()}
           accessibilityLabel="Close modal"
@@ -72,7 +73,7 @@ const FlowStep: React.FC<FlowStepProps> = ({
           </Text>
         )}
         {children}
-      </View>
+      </SafeAreaView>
     </Container>
   );
 };

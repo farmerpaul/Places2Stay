@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import {FlowStep} from '/component/partial';
 import {PlacesFilterContext} from '/context';
+import {FlowStep} from '/component/partial';
 
 import {TypeButton} from './component';
 import {Icon} from '/component/base';
