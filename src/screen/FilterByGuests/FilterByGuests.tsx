@@ -47,11 +47,11 @@ const FilterByGuests: React.FC<FilterByGuestsProps> = ({navigation}) => {
     filterContext.children = children;
     filterContext.infants = infants;
     filterContext.pets = pets;
-    navigation.navigate('Home');
+    navigation.navigate('QueryPlaces');
   };
 
   const onPressSkip = () => {
-    navigation.navigate('Home');
+    navigation.navigate('QueryPlaces');
   };
 
   /* Render component.
@@ -81,7 +81,7 @@ const FilterByGuests: React.FC<FilterByGuestsProps> = ({navigation}) => {
       {renderRow('Pets', 'Description', pets, setPets)}
       <View style={styles.bottomActions}>
         <Button label="Skip" variant="secondary" onPress={onPressSkip} />
-        <Button label="Next" variant="primary" onPress={onPressNext} />
+        <Button label="Find Places" variant="primary" onPress={onPressNext} />
       </View>
     </FlowStep>
   );

@@ -117,6 +117,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
               imageSource={item.image}
               title={item.title}
               style={styles.cityCtaSlide}
+              imageLabel={item.imageLabel}
             />
           )}
           sliderWidth={width}

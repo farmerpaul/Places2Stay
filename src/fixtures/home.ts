@@ -1856,7 +1856,7 @@ const homeMockData = {
         {
           id: 4,
           image: require('./cityPhoto/vancouver.jpg'),
-          title: 'Vancourver',
+          title: 'Vancouver',
         },
         {
           id: 5,

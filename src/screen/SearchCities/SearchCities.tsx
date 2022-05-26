@@ -43,7 +43,7 @@ const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
 
   /* Effects
   =================================================== */
-  // Focus and clear search input when screen gains focus.
+  // Focus search input when screen gains focus.
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       inputRef.current?.focus();

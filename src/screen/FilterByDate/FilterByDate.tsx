@@ -48,8 +48,8 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
   const [startDate, setStartDate] = useState<DateData>();
   const [endDate, setEndDate] = useState<DateData>();
   const [dateRange, setDateRange] = useState<Array<DateData>>();
-  const [flexDateLength, setFlexDateLength] = useState('weekend');
-  const [flexDateMonths, setFlexDateMonths] =
+  const [flexDateLength /*, setFlexDateLength*/] = useState('weekend');
+  const [flexDateMonths /*, setFlexDateMonths*/] =
     useState<Array<{month: number; year: number}>>();
 
   const modeAnim = useRef(new Animated.Value(0)).current;
@@ -59,7 +59,7 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
   useEffect(() => {
     Animated.spring(modeAnim, {
       toValue: dateMode === 'range' ? 0 : 1,
-      speed: 10,
+      speed: 14,
       bounciness: 10,
       useNativeDriver: true,
     }).start();

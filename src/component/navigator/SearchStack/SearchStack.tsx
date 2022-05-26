@@ -5,6 +5,7 @@ import {
   FilterByDate,
   FilterByGuests,
   FilterByType,
+  QueryPlaces,
   SearchCities,
 } from '/screen';
 import {FlowHeader} from '/component/partial';
@@ -37,6 +38,11 @@ const SearchStack: React.FC = () => (
       component={FilterByGuests}
       name="FilterByGuests"
       options={{title: 'Who’s going?'}}
+    />
+    <Screen
+      component={QueryPlaces}
+      name="QueryPlaces"
+      options={{headerShown: false}}
     />
   </Navigator>
 );
