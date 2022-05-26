@@ -16,10 +16,8 @@ export type FilterByTypeProps = {
 };
 
 const styles = StyleSheet.create({
-  bottomActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 'auto',
+  container: {
+    minHeight: 560,
   },
   calendar: {
     marginTop: 20,
@@ -36,6 +34,11 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+  },
+  bottomActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 'auto',
   },
 });
 
@@ -116,7 +119,10 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
   /* Render component.
   =================================================== */
   return (
-    <FlowStep navigation={navigation} title={filterContext.city}>
+    <FlowStep
+      navigation={navigation}
+      title={filterContext.city}
+      style={styles.container}>
       <ToggleInput
         options={[
           {value: 'range', label: 'Calendar'},

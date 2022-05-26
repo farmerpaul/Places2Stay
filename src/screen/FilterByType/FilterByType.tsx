@@ -11,7 +11,6 @@ import {Icon} from '/component/base';
 export type FilterByTypeProps = {
   route: RouteProp<any>;
   navigation: NativeStackNavigationProp<any>;
-  onSelect?: (value: string) => void;
 };
 
 const FilterByType: React.FC<FilterByTypeProps> = ({navigation}) => {

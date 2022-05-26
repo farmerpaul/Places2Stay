@@ -15,4 +15,5 @@ export const colors = {
   muted: '#858585',
   greyLight: '#E3E3E3',
   grey: '#8C8C8C',
+  silver: '#C1BBBB',
 } as const;
