@@ -37,7 +37,7 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
   } = useContext(PlacesFilterContext);
 
   const fade = useRef(new Animated.Value(0)).current;
-  const progress = useRef(new Animated.Value(0)).current;
+  const progress = useRef(new Animated.Value(0.05)).current;
 
   /* Effects
   =================================================== */

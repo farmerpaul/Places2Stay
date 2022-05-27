@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Calendar as RNCalendar, DateData} from 'react-native-calendars';
+
 import {colors} from '/theme';
 
 export type CalendarProps = {

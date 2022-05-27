@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   cityCtaSlide: {
-    position: 'relative',
     left: spacing.gutter,
   },
   gradient: {
