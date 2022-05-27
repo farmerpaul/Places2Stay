@@ -35,7 +35,10 @@ const styles = StyleSheet.create({
 });
 
 const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
-  const filterContext = useContext(PlacesFilterContext);
+  const {
+    city: [, setCity],
+  } = useContext(PlacesFilterContext);
+
   const inputRef = useRef<TextInput>(null);
   const [searchText, setSearchText] = useState('');
   const options = searchMockData.cities;
@@ -72,7 +75,7 @@ const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
   =================================================== */
   // Trigger selection event handler and move to next screen.
   const onSelectItem = (value: string) => {
-    filterContext.city = value;
+    setCity(value);
     navigation.push('FilterByType');
   };
 

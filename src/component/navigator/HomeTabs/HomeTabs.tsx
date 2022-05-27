@@ -65,6 +65,7 @@ const HomeTabs = () => {
           tabBarShowLabel: false,
           headerTitle: '',
           headerTransparent: true,
+          headerStyle: {height: 0},
           headerLeft: () => (
             <HeaderButton
               svg={require('/asset/svg/bell.svg')}

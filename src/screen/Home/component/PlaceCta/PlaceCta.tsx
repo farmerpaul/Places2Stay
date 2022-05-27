@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   Image,
   ImageSourcePropType,
@@ -47,29 +47,25 @@ const styles = StyleSheet.create({
   },
 });
 
-const PlaceCta: React.FC<PlaceCtaProps> = ({
-  style,
-  imageSource,
-  imageLabel,
-  title,
-  subtitle,
-}) => {
-  return (
-    <View style={[styles.container, style]}>
-      <View style={styles.imageContainer}>
-        <Image source={imageSource} style={styles.image} />
-        {!!imageLabel && (
-          <View style={styles.imageLabel}>
-            <Text>{imageLabel}</Text>
-          </View>
-        )}
+const PlaceCta: React.FC<PlaceCtaProps> = memo(
+  ({style, imageSource, imageLabel, title, subtitle}) => {
+    return (
+      <View style={[styles.container, style]}>
+        <View style={styles.imageContainer}>
+          <Image source={imageSource} style={styles.image} />
+          {!!imageLabel && (
+            <View style={styles.imageLabel}>
+              <Text>{imageLabel}</Text>
+            </View>
+          )}
+        </View>
+        <Text variant="body" style={styles.title}>
+          {title}
+        </Text>
+        {!!subtitle && <Text color="muted">{subtitle}</Text>}
       </View>
-      <Text variant="body" style={styles.title}>
-        {title}
-      </Text>
-      {!!subtitle && <Text color="muted">{subtitle}</Text>}
-    </View>
-  );
-};
+    );
+  },
+);
 
 export default PlaceCta;

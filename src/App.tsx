@@ -12,21 +12,35 @@ import {LogBox} from 'react-native';
 LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
 // ... end workaround.
 
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {HomeTabs, SearchStack} from '/component/navigator';
-import {PlacesFilterProvider} from '/context/PlacesFilterContext/PlacesFilterContext';
+import {
+  Availability,
+  Guests,
+  PlacesFilterProvider,
+  StayType,
+} from '/context/PlacesFilterContext/PlacesFilterContext';
 
 const {Navigator, Screen} = createNativeStackNavigator();
 
 const App = () => {
-  // Declare filter data store and pass it to the provider below.
-  const filterContext = {};
+  // Declare current filter state variables and pass them to the provider below.
+  const [city, setCity] = useState<string>();
+  const [stayType, setStayType] = useState<StayType>();
+  const [availability, setAvailability] = useState<Availability>();
+  const [guests, setGuests] = useState<Guests>();
 
   return (
-    <PlacesFilterProvider value={filterContext}>
+    <PlacesFilterProvider
+      value={{
+        city: [city, setCity],
+        stayType: [stayType, setStayType],
+        availability: [availability, setAvailability],
+        guests: [guests, setGuests],
+      }}>
       <NavigationContainer>
         <Navigator screenOptions={{headerShown: false}}>
           <Screen name="HomeTabs" component={HomeTabs} />

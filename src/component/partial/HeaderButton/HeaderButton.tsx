@@ -11,6 +11,8 @@ export type HeaderButtonProps = IconProps & {
 
 const styles = StyleSheet.create({
   pressable: {
+    position: 'absolute',
+    top: 0,
     padding: 8,
     backgroundColor: colors.yellow,
     marginTop: Platform.OS === 'android' ? -12 : 0,

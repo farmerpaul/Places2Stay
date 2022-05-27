@@ -30,11 +30,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 'auto',
+    marginBottom: 16,
   },
 });
 
 const FilterByGuests: React.FC<FilterByGuestsProps> = ({navigation}) => {
-  const filterContext = useContext(PlacesFilterContext);
+  const {
+    city: [city],
+    guests: [, setGuests],
+  } = useContext(PlacesFilterContext);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
@@ -43,10 +47,13 @@ const FilterByGuests: React.FC<FilterByGuestsProps> = ({navigation}) => {
   /* Event handlers.
   =================================================== */
   const onPressNext = () => {
-    filterContext.adults = adults;
-    filterContext.children = children;
-    filterContext.infants = infants;
-    filterContext.pets = pets;
+    const guests = {
+      adults: adults,
+      children: children,
+      infants: infants,
+      pets: pets,
+    };
+    setGuests(guests);
     navigation.navigate('QueryPlaces');
   };
 
@@ -74,7 +81,7 @@ const FilterByGuests: React.FC<FilterByGuestsProps> = ({navigation}) => {
   );
 
   return (
-    <FlowStep navigation={navigation} title={filterContext.city}>
+    <FlowStep navigation={navigation} title={city}>
       {renderRow('Adults', 'Description', adults, setAdults)}
       {renderRow('Children', 'Description', children, setChildren)}
       {renderRow('Infants', 'Description', infants, setInfants)}

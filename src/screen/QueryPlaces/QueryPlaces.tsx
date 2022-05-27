@@ -1,10 +1,11 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
+import {Animated, StyleSheet, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import LottieView from 'lottie-react-native';
 
-import {Animated, StyleSheet, View} from 'react-native';
 import {colors} from '/theme';
+import {PlacesFilterContext} from '/context';
 import {Text} from '/component/base';
 
 export type QueryPlacesProps = {
@@ -31,6 +32,10 @@ const styles = StyleSheet.create({
 });
 
 const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
+  const {
+    city: [city],
+  } = useContext(PlacesFilterContext);
+
   const fade = useRef(new Animated.Value(0)).current;
   const progress = useRef(new Animated.Value(0)).current;
 
@@ -41,7 +46,7 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
   useEffect(() => {
     Animated.timing(progress, {
       toValue: 1,
-      duration: 20000,
+      duration: 16000,
       useNativeDriver: false,
     }).start();
     Animated.timing(fade, {
@@ -57,7 +62,7 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
           duration: 600,
           useNativeDriver: true,
         }).start(() => navigation.navigate('Home'));
-      }, 8000);
+      }, 6000);
     });
 
     return unsubscribe;
@@ -74,7 +79,7 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
           style={styles.lottie}
         />
         <Text variant="title" textAlign="center">
-          Finding Places…
+          Finding Places in {city}…
         </Text>
       </Animated.View>
     </View>

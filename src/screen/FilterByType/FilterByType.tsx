@@ -2,11 +2,12 @@ import React, {useContext} from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import {PlacesFilterContext} from '/context';
 import {FlowStep} from '/component/partial';
+import {Icon} from '/component/base';
+import {PlacesFilterContext} from '/context';
+import {StayType} from '/context/PlacesFilterContext/PlacesFilterContext';
 
 import {TypeButton} from './component';
-import {Icon} from '/component/base';
 
 export type FilterByTypeProps = {
   route: RouteProp<any>;
@@ -14,19 +15,22 @@ export type FilterByTypeProps = {
 };
 
 const FilterByType: React.FC<FilterByTypeProps> = ({navigation}) => {
-  const filterContext = useContext(PlacesFilterContext);
+  const {
+    city: [city],
+    stayType: [, setStayType],
+  } = useContext(PlacesFilterContext);
 
   /* Event handlers.
   =================================================== */
-  const onPressType = (type: string) => {
-    filterContext.type = type;
+  const onPressType = (type: StayType) => {
+    setStayType(type);
     navigation.navigate('FilterByDate');
   };
 
   /* Render component.
   =================================================== */
   return (
-    <FlowStep navigation={navigation} title={filterContext.city}>
+    <FlowStep navigation={navigation} title={city}>
       <TypeButton
         title="Find a place to stay"
         onPress={() => onPressType('shortTerm')}

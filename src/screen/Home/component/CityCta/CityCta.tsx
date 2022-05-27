@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   Image,
   ImageSourcePropType,
+  Pressable,
   StyleProp,
   StyleSheet,
   View,
@@ -15,6 +16,7 @@ export type CityCtaProps = {
   imageSource: ImageSourcePropType;
   title: string;
   imageLabel?: string;
+  onPress?: () => void;
 };
 
 const styles = StyleSheet.create({
@@ -43,25 +45,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const CityCta: React.FC<CityCtaProps> = ({
-  style,
-  imageSource,
-  title,
-  imageLabel,
-}) => {
-  return (
-    <View style={[styles.container, style]}>
-      <View style={styles.imageContainer}>
-        <Image source={imageSource} style={styles.image} />
-        {!!imageLabel && (
-          <View style={styles.imageLabel}>
-            <Text>{imageLabel}</Text>
-          </View>
-        )}
-      </View>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-};
+const CityCta: React.FC<CityCtaProps> = memo(
+  ({style, imageSource, title, imageLabel, onPress}) => {
+    return (
+      <Pressable onPress={onPress} style={[styles.container, style]}>
+        <View style={styles.imageContainer}>
+          <Image source={imageSource} style={styles.image} />
+          {!!imageLabel && (
+            <View style={styles.imageLabel}>
+              <Text>{imageLabel}</Text>
+            </View>
+          )}
+        </View>
+        <Text style={styles.title}>{title}</Text>
+      </Pressable>
+    );
+  },
+);
 
 export default CityCta;

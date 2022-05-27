@@ -17,11 +17,12 @@ export type FilterByTypeProps = {
 
 const styles = StyleSheet.create({
   container: {
-    minHeight: 560,
+    minHeight: 575,
   },
   calendar: {
     marginTop: 20,
     borderRadius: 8,
+    overflow: 'hidden',
   },
   calendarHeader: {
     fontSize: 10,
@@ -39,16 +40,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 'auto',
+    marginBottom: 16,
   },
 });
 
 const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
-  const filterContext = useContext(PlacesFilterContext);
-  const [dateMode, setDateMode] = useState('range');
+  const {
+    city: [city],
+    availability: [, setAvailability],
+  } = useContext(PlacesFilterContext);
+
+  const [mode, setMode] = useState<'range' | 'flexible'>('range');
   const [startDate, setStartDate] = useState<DateData>();
   const [endDate, setEndDate] = useState<DateData>();
-  const [dateRange, setDateRange] = useState<Array<DateData>>();
-  const [flexDateLength /*, setFlexDateLength*/] = useState('weekend');
+  const [range, setRange] = useState<Array<DateData>>();
+  const [flexDateLength /*, setFlexDateLength*/] = useState<
+    'weekend' | 'week' | 'month'
+  >('weekend');
   const [flexDateMonths /*, setFlexDateMonths*/] =
     useState<Array<{month: number; year: number}>>();
 
@@ -58,26 +66,21 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
   =================================================== */
   useEffect(() => {
     Animated.spring(modeAnim, {
-      toValue: dateMode === 'range' ? 0 : 1,
+      toValue: mode === 'range' ? 0 : 1,
       speed: 14,
       bounciness: 10,
       useNativeDriver: true,
     }).start();
-  }, [dateMode, modeAnim]);
+  }, [mode, modeAnim]);
 
   /* Event handlers.
   =================================================== */
   const onPressNext = () => {
-    filterContext.dateMode = dateMode as 'range' | 'flexible';
-    if (dateMode === 'range') {
-      filterContext.dateRange = dateRange;
-    } else {
-      filterContext.flexDateLength = flexDateLength as
-        | 'weekend'
-        | 'week'
-        | 'month';
-      filterContext.flexDateMonths = flexDateMonths;
-    }
+    const availability = {
+      mode,
+      ...(mode === 'range' ? {range} : {flexDateLength, flexDateMonths}),
+    };
+    setAvailability(availability);
     navigation.navigate('FilterByGuests');
   };
 
@@ -90,7 +93,7 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
       // Reset date range if there's already an end date picked.
       setStartDate(date);
       setEndDate(undefined);
-      setDateRange(undefined);
+      setRange(undefined);
     } else if (startDate) {
       // Complete current date range selection if there's a start date picked.
       setEndDate(date);
@@ -109,7 +112,7 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
           timestamp: curDate.getTime(),
         });
       }
-      setDateRange(dates);
+      setRange(dates);
     } else {
       // Begin first date range selection by picking start date.
       setStartDate(date);
@@ -119,17 +122,14 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
   /* Render component.
   =================================================== */
   return (
-    <FlowStep
-      navigation={navigation}
-      title={filterContext.city}
-      style={styles.container}>
+    <FlowStep navigation={navigation} title={city} style={styles.container}>
       <ToggleInput
         options={[
           {value: 'range', label: 'Calendar'},
           {value: 'flexible', label: 'I’m flexible'},
         ]}
-        value={dateMode}
-        setValue={setDateMode}
+        value={mode}
+        setValue={value => setMode(value as 'range' | 'flexible')}
       />
       <View>
         <Animated.View
@@ -150,16 +150,14 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
                 },
               ],
             },
-          ]}>
+          ]}
+          pointerEvents={mode === 'range' ? 'auto' : 'none'}>
           <Calendar
             markingType="period"
             markedDates={{
-              ...(dateRange &&
+              ...(range &&
                 Object.fromEntries(
-                  dateRange.map(date => [
-                    date.dateString,
-                    {color: colors.teal},
-                  ]),
+                  range.map(date => [date.dateString, {color: colors.teal}]),
                 )),
               ...(startDate && {
                 [startDate.dateString]: {
@@ -185,6 +183,13 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
               textDayFontSize: 14,
               textMonthFontSize: 14,
               textDayHeaderFontSize: 12,
+              // @ts-expect-error
+              'stylesheet.calendar.main': {
+                container: {
+                  backgroundColor: colors.white,
+                  padding: 0,
+                },
+              },
             }}
           />
         </Animated.View>
@@ -206,7 +211,8 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
                 },
               ],
             },
-          ]}>
+          ]}
+          pointerEvents={mode === 'range' ? 'none' : 'auto'}>
           <Text variant="title2" style={styles.heading}>
             Stay for a <Text variant="title2bold">{flexDateLength}</Text>
           </Text>
