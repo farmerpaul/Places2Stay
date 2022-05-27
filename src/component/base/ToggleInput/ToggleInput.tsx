@@ -64,32 +64,57 @@ const ToggleInput: React.FC<ToggleInputProps> = ({
   const option0Ref = useRef<View>(null);
   const option1Ref = useRef<View>(null);
 
+  /**
+   * Get left & width values of option corresponding to provided index, returned
+   * to passed callback function.
+   */
+  const getPosition = (
+    index: number,
+    cb: (left: number, width: number) => void,
+  ) => {
+    containerRef.current &&
+      (index === 0 ? option0Ref : option1Ref).current?.measureLayout(
+        containerRef.current,
+        (left, _top, width, _height) => cb(left, width),
+        () => null,
+      );
+  };
+
+  /* Effects.
+  =================================================== */
   // Whenever the active option changes, get the coordinates of the selected
   // option and animate the highlight component to be match it.
   useEffect(() => {
     if (containerRef.current) {
-      (activeIndex === 0 ? option0Ref : option1Ref).current?.measureLayout(
-        containerRef.current,
-        (left, _top, width, _height) => {
-          Animated.timing(leftAnim.current, {
-            toValue: left,
-            duration: 200,
-            useNativeDriver: false,
-          }).start();
-          Animated.timing(widthAnim.current, {
-            toValue: width,
-            duration: 200,
-            useNativeDriver: false,
-          }).start();
-        },
-        () => null,
-      );
+      getPosition(activeIndex, (left, width) => {
+        Animated.timing(leftAnim.current, {
+          toValue: left,
+          duration: 200,
+          useNativeDriver: false,
+        }).start();
+        Animated.timing(widthAnim.current, {
+          toValue: width,
+          duration: 200,
+          useNativeDriver: false,
+        }).start();
+      });
     }
   }, [activeIndex]);
 
+  /* Event handlers.
+  =================================================== */
+  // Initialize animated values to appropriate defaults.
+  const onLayout = () =>
+    getPosition(activeIndex, (left, width) => {
+      leftAnim.current.setValue(left);
+      widthAnim.current.setValue(width);
+    });
+
+  /* Render component.
+  =================================================== */
   return (
     <View style={[styles.row, style]}>
-      <View ref={containerRef} style={styles.container}>
+      <View ref={containerRef} style={styles.container} onLayout={onLayout}>
         <Animated.View
           style={[
             styles.highlight,
