@@ -73,12 +73,12 @@ const ToggleInput: React.FC<ToggleInputProps> = ({
         (left, _top, width, _height) => {
           Animated.timing(leftAnim.current, {
             toValue: left,
-            duration: 250,
+            duration: 200,
             useNativeDriver: false,
           }).start();
           Animated.timing(widthAnim.current, {
             toValue: width,
-            duration: 250,
+            duration: 200,
             useNativeDriver: false,
           }).start();
         },
