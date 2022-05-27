@@ -5,7 +5,7 @@ import {Calendar, DateData} from 'react-native-calendars';
 
 import {PlacesFilterContext} from '/context';
 import {FlowStep} from '/component/partial';
-import {Button, Text, ToggleInput} from '/component/base';
+import {Button, OptionButtons, Text, ToggleInput} from '/component/base';
 import {Animated, StyleSheet, View} from 'react-native';
 import {colors} from '/theme';
 
@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
+  optionButtons: {
+    marginVertical: 16,
+  },
   bottomActions: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -54,7 +57,7 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
   const [startDate, setStartDate] = useState<DateData>();
   const [endDate, setEndDate] = useState<DateData>();
   const [range, setRange] = useState<Array<DateData>>();
-  const [flexDateLength /*, setFlexDateLength*/] = useState<
+  const [flexDateLength, setFlexDateLength] = useState<
     'weekend' | 'week' | 'month'
   >('weekend');
   const [flexDateMonths /*, setFlexDateMonths*/] =
@@ -216,6 +219,18 @@ const FilterByDate: React.FC<FilterByTypeProps> = ({navigation}) => {
           <Text variant="title2" style={styles.heading}>
             Stay for a <Text variant="title2bold">{flexDateLength}</Text>
           </Text>
+          <OptionButtons
+            options={[
+              {value: 'weekend', label: 'Weekend'},
+              {value: 'week', label: 'Week'},
+              {value: 'month', label: 'Month'},
+            ]}
+            value={flexDateLength}
+            onPressOption={value =>
+              setFlexDateLength(value as 'weekend' | 'week' | 'month')
+            }
+            style={styles.optionButtons}
+          />
           <Text variant="title2" style={styles.heading}>
             {flexDateMonths ? (
               <>

@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useRef} from 'react';
 import {
   Animated,
   FlatList,
-  InteractionManager,
   StyleSheet,
   useWindowDimensions,
   View,
@@ -154,7 +153,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
                     // updated before modal appears.
                     //
                     // Really, this would all be done somewhat differently if
-                    // real querying were used making proper use of isLoading
+                    // real querying were used, making proper use of isLoading
                     // states, etc. (e.g., react-query).
                     setTimeout(() => setCity(item.title), 400);
                     navigation.navigate('SearchStack', {screen: 'QueryPlaces'});
