@@ -1,5 +1,13 @@
-import React from 'react';
-import {Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Easing,
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 import {Text} from '/component/base';
 import {colors} from '/theme';
@@ -37,18 +45,29 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   onPressOption,
   style,
 }) => {
+  const [scale, setScale] = useState(1);
+
   return (
     <View style={[styles.container, style]}>
       {options.map(option => (
-        <Pressable
+        <Animatable.View
           key={option.value}
-          onPress={() => onPressOption(option.value)}
-          style={[
-            styles.option,
-            value === option.value && styles.optionSelected,
-          ]}>
-          <Text variant="base">{option.label}</Text>
-        </Pressable>
+          // @ts-expect-error
+          transition="scale"
+          duration={250}
+          easing={Easing.elastic(2)}
+          style={{transform: [{scale}]}}>
+          <Pressable
+            onPressIn={() => setScale(0.94)}
+            onPressOut={() => setScale(1)}
+            onPress={() => onPressOption(option.value)}
+            style={[
+              styles.option,
+              value === option.value && styles.optionSelected,
+            ]}>
+            <Text variant="base">{option.label}</Text>
+          </Pressable>
+        </Animatable.View>
       ))}
     </View>
   );

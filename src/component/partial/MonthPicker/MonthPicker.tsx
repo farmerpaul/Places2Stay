@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -30,16 +30,23 @@ const MonthPicker: React.FC<MonthPickerProps> = ({
   onPressMonth,
   style,
 }) => {
+  const carouselRef = useRef<Carousel<any>>(null);
   const {width} = useWindowDimensions();
 
+  /* Render component.
+  =================================================== */
   return (
     <Carousel
+      ref={carouselRef}
       data={months}
-      renderItem={({item}) => (
+      renderItem={({item, index}) => (
         <Month
           month={item.month}
           year={item.year}
-          onPress={() => onPressMonth(item)}
+          onPress={() => {
+            carouselRef.current?.snapToItem(index - 1);
+            onPressMonth(item);
+          }}
           isSelected={selectedMonths?.some(
             value => value.month === item.month && value.year === item.year,
           )}
