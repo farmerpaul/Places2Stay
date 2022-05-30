@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {RouteProp} from '@react-navigation/native';
+import React, {useCallback, useContext} from 'react';
+import {RouteProp, useFocusEffect} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {FlowStep} from '/component/partial';
@@ -14,11 +14,20 @@ export type FilterByTypeProps = {
   navigation: NativeStackNavigationProp<any>;
 };
 
-const FilterByType: React.FC<FilterByTypeProps> = ({navigation}) => {
+const FilterByType: React.FC<FilterByTypeProps> = ({navigation, route}) => {
   const {
-    city: [city],
+    city: [city, setCity],
     stayType: [, setStayType],
   } = useContext(PlacesFilterContext);
+
+  /* Effects.
+  =================================================== */
+  useFocusEffect(
+    // Set city if route called with city param.
+    useCallback(() => {
+      route.params?.city && setCity(route.params.city);
+    }, [route, setCity]),
+  );
 
   /* Event handlers.
   =================================================== */
