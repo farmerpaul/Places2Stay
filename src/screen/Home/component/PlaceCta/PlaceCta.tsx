@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import {
   Image,
   ImageSourcePropType,
+  Pressable,
   StyleProp,
   StyleSheet,
   View,
@@ -17,6 +18,7 @@ export type PlaceCtaProps = {
   imageLabel?: string;
   title: string;
   subtitle?: string;
+  onPress?: () => void;
 };
 
 const styles = StyleSheet.create({
@@ -48,9 +50,9 @@ const styles = StyleSheet.create({
 });
 
 const PlaceCta: React.FC<PlaceCtaProps> = memo(
-  ({style, imageSource, imageLabel, title, subtitle}) => {
+  ({style, imageSource, imageLabel, title, subtitle, onPress}) => {
     return (
-      <View style={[styles.container, style]}>
+      <Pressable style={[styles.container, style]} onPress={onPress}>
         <View style={styles.imageContainer}>
           <Image source={imageSource} style={styles.image} />
           {!!imageLabel && (
@@ -63,7 +65,7 @@ const PlaceCta: React.FC<PlaceCtaProps> = memo(
           {title}
         </Text>
         {!!subtitle && <Text color="muted">{subtitle}</Text>}
-      </View>
+      </Pressable>
     );
   },
 );

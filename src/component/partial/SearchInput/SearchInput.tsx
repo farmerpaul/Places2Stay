@@ -11,7 +11,7 @@ import {colors, spacing} from '/theme';
 
 export type SearchInputProps = TextInputProps & {
   value?: string;
-  onPressClear: () => void;
+  onPressClear?: () => void;
 };
 
 const styles = StyleSheet.create({

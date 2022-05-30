@@ -120,6 +120,9 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
               imageLabel={item.imageLabel}
               title={item.title}
               subtitle={item.location}
+              onPress={() => {
+                navigation.navigate('HomeTabs', {screen: 'Stay'});
+              }}
             />
           )}
           onScroll={Animated.event(

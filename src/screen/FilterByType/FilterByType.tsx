@@ -22,8 +22,8 @@ const FilterByType: React.FC<FilterByTypeProps> = ({navigation, route}) => {
 
   /* Effects.
   =================================================== */
+  // Set city if route called with city param.
   useFocusEffect(
-    // Set city if route called with city param.
     useCallback(() => {
       route.params?.city && setCity(route.params.city);
     }, [route, setCity]),
