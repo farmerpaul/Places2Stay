@@ -104,7 +104,6 @@ const FlowHeader: React.FC<FlowHeaderProps> = ({title}) => {
    */
   const panResponder = useRef(
     PanResponder.create({
-      //onStartShouldSetPanResponderCapture: () => true,
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {
         positionAnim.extractOffset();

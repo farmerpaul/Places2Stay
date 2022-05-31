@@ -1,7 +1,10 @@
 import React from 'react';
 import Animated, {
+  BaseAnimationBuilder,
+  EntryExitAnimationFunction,
   interpolate,
   interpolateColor,
+  Keyframe,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
@@ -20,6 +23,18 @@ export type PressableProps = RNPressableProps & {
   colorAnimation?: {property: string; inactive: string; active: string};
   positionStyle?: StyleProp<ViewStyle>;
   style?: StyleProp<ViewStyle>;
+  entering?:
+    | BaseAnimationBuilder
+    | typeof BaseAnimationBuilder
+    | EntryExitAnimationFunction
+    | Keyframe
+    | undefined;
+  exiting?:
+    | BaseAnimationBuilder
+    | typeof BaseAnimationBuilder
+    | EntryExitAnimationFunction
+    | Keyframe
+    | undefined;
 };
 
 const Pressable: React.FC<PressableProps> = ({
@@ -30,6 +45,8 @@ const Pressable: React.FC<PressableProps> = ({
   onPressOut,
   style,
   children,
+  entering,
+  exiting,
   ...props
 }) => {
   const shared = useSharedValue(1);
@@ -76,7 +93,12 @@ const Pressable: React.FC<PressableProps> = ({
       }}
       style={positionStyle}
       {...props}>
-      <Animated.View style={[animStyle, style]}>{children}</Animated.View>
+      <Animated.View
+        entering={entering}
+        exiting={exiting}
+        style={[animStyle, style]}>
+        {children}
+      </Animated.View>
     </RNPressable>
   );
 };

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import {
-  Animated,
+  Animated as RNAnimated,
   FlatList,
   StyleSheet,
   useWindowDimensions,
@@ -17,6 +17,7 @@ import {CityCta, PlaceCta, SectionHeader} from './component';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NavigationProp} from '@react-navigation/native';
 import {PlacesFilterContext} from '/context';
+import Animated, {BounceInDown, BounceOutDown} from 'react-native-reanimated';
 
 export type HomeProps = {
   navigation: NavigationProp<any, any>;
@@ -72,13 +73,13 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
 
   const listRef = useRef<FlatList>(null);
   const {width} = useWindowDimensions();
-  const scrollPosition = useRef(new Animated.Value(0)).current;
+  const scrollPosition = useRef(new RNAnimated.Value(0)).current;
 
   /* Effects.
   =================================================== */
   // Scroll to the top of the list whenever city filter changes.
   useEffect(() => {
-    listRef.current?.scrollToOffset({offset: 0, animated: false});
+    listRef.current?.scrollToOffset({offset: 0, animated: true});
   }, [city]);
 
   /* Event handlers
@@ -89,7 +90,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
   =================================================== */
   return (
     <SafeAreaView edges={['top']} style={styles.container}>
-      <Animated.View
+      <RNAnimated.View
         style={[
           styles.searchInputContainer,
           {
@@ -112,9 +113,9 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
             onPressClear={() => setCity(undefined)}
           />
         </View>
-      </Animated.View>
+      </RNAnimated.View>
       <View style={styles.list}>
-        <Animated.FlatList
+        <RNAnimated.FlatList
           ref={listRef}
           data={data.sections.placeCtas.places}
           ListHeaderComponent={
@@ -137,7 +138,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
               }}
             />
           )}
-          onScroll={Animated.event(
+          onScroll={RNAnimated.event(
             [{nativeEvent: {contentOffset: {y: scrollPosition}}}],
             {useNativeDriver: false},
           )}
@@ -152,7 +153,9 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
       {
         // Hide cities section if filter is active.
         !city && (
-          <View>
+          <Animated.View
+            entering={BounceInDown.duration(400)}
+            exiting={BounceOutDown.duration(400)}>
             <SectionHeader title={data.sections.cityCtas.title} />
             <Carousel
               data={data.sections.cityCtas.places}
@@ -181,7 +184,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
               containerCustomStyle={styles.cityCtaCarousel}
               removeClippedSubviews={false}
             />
-          </View>
+          </Animated.View>
         )
       }
     </SafeAreaView>
