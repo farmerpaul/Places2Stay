@@ -92,24 +92,30 @@ const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
       <Text variant="title" style={styles.title}>
         Getaways Near You
       </Text>
-      {filteredOptions.map(option => (
-        <Pressable
-          key={option}
-          onPress={() => onSelectItem(option)}
-          style={styles.option}
-          colorAnimation={{
-            property: 'backgroundColor',
-            inactive: colors.yellow,
-            active: colors.blueGrey,
-          }}>
-          <Icon
-            svg={require('/asset/svg/map-marker.svg')}
-            color={colors.blue}
-            style={styles.optionIcon}
-          />
-          <Text variant="base">{option}</Text>
-        </Pressable>
-      ))}
+      {filteredOptions.length ? (
+        filteredOptions.map(option => (
+          <Pressable
+            key={option}
+            onPress={() => onSelectItem(option)}
+            style={styles.option}
+            colorAnimation={{
+              property: 'backgroundColor',
+              inactive: colors.yellow,
+              active: colors.blueGrey,
+            }}>
+            <Icon
+              svg={require('/asset/svg/map-marker.svg')}
+              color={colors.blue}
+              style={styles.optionIcon}
+            />
+            <Text variant="base">{option}</Text>
+          </Pressable>
+        ))
+      ) : (
+        <Text color="muted" variant="base">
+          No matching cities found
+        </Text>
+      )}
     </FlowStep>
   );
 };

@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
+    backgroundColor: colors.yellow,
+    paddingBottom: 4,
   },
   list: {
     flex: 1,
@@ -53,6 +55,12 @@ const styles = StyleSheet.create({
     left: spacing.gutter,
     right: spacing.gutter,
     height: 24,
+  },
+  gradientTop: {
+    top: '100%',
+    marginTop: 4,
+  },
+  gradientBottom: {
     bottom: 0,
   },
 });
@@ -86,19 +94,24 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
           styles.searchInputContainer,
           {
             top: scrollPosition.interpolate({
-              inputRange: [0, 32],
+              inputRange: [0, 64],
               outputRange: [0, -32],
-              extrapolate: 'clamp',
+              extrapolateRight: 'clamp',
             }),
           },
         ]}>
-        <SearchInput
-          onKeyPress={showSearchModal}
-          onPressIn={showSearchModal}
-          style={styles.searchInput}
-          value={city}
-          onPressClear={() => setCity(undefined)}
-        />
+        <View style={styles.searchInput}>
+          <LinearGradient
+            colors={[colors.yellow, colors.yellowTransparent]}
+            style={[styles.gradient, styles.gradientTop]}
+          />
+          <SearchInput
+            onKeyPress={showSearchModal}
+            onPressIn={showSearchModal}
+            value={city}
+            onPressClear={() => setCity(undefined)}
+          />
+        </View>
       </Animated.View>
       <View style={styles.list}>
         <Animated.FlatList
@@ -132,7 +145,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
         {!city && (
           <LinearGradient
             colors={[colors.yellowTransparent, colors.yellow]}
-            style={styles.gradient}
+            style={[styles.gradient, styles.gradientBottom]}
           />
         )}
       </View>

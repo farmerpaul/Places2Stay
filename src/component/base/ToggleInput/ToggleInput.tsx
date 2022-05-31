@@ -87,14 +87,16 @@ const ToggleInput: React.FC<ToggleInputProps> = ({
   useEffect(() => {
     if (containerRef.current) {
       getPosition(activeIndex, (left, width) => {
-        Animated.timing(leftAnim.current, {
+        Animated.spring(leftAnim.current, {
           toValue: left,
-          duration: 200,
+          speed: 14,
+          bounciness: 7,
           useNativeDriver: false,
         }).start();
-        Animated.timing(widthAnim.current, {
+        Animated.spring(widthAnim.current, {
           toValue: width,
-          duration: 200,
+          speed: 14,
+          bounciness: 7,
           useNativeDriver: false,
         }).start();
       });

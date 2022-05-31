@@ -79,9 +79,9 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
         scale.value = withDelay(
           100,
           withSpring(1, {
-            mass: 2.1,
-            stiffness: 290,
-            restDisplacementThreshold: 0.001,
+            mass: 2,
+            stiffness: 340,
+            restDisplacementThreshold: 0.0003,
           }),
         );
         // Start Lottie animation.
