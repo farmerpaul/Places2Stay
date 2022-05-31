@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import Animated, {
+  Easing,
   useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
@@ -59,7 +60,7 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
   =================================================== */
   const fadeStyle = useAnimatedStyle(() => ({
     opacity: withTiming(fade.value, {
-      duration: 600,
+      duration: 500,
     }),
   }));
   const scaleStyle = useAnimatedStyle(() => ({
@@ -78,21 +79,27 @@ const QueryPlaces: React.FC<QueryPlacesProps> = ({navigation}) => {
         scale.value = withDelay(
           100,
           withSpring(1, {
-            mass: 2.25,
-            stiffness: 275,
-            restDisplacementThreshold: 0.002,
+            mass: 2.1,
+            stiffness: 290,
+            restDisplacementThreshold: 0.001,
           }),
         );
         // Start Lottie animation.
-        progress.value = withTiming(1, {duration: 16000});
+        progress.value = withTiming(1, {
+          duration: 16000,
+          easing: Easing.linear,
+        });
 
         // Wait 6 seconds, then navigate to home.
         setTimeout(() => {
           // Start fade/scale-out.
           fade.value = 0;
-          scale.value = withTiming(0.5, {duration: 600});
+          scale.value = withTiming(0.6, {
+            duration: 500,
+            easing: Easing.in(Easing.cubic),
+          });
           // Navigate to home after transition.
-          setTimeout(() => navigation.navigate('HomeTabs'), 600);
+          setTimeout(() => navigation.navigate('HomeTabs'), 500);
         }, 6000);
       }, 400);
     });
