@@ -1,16 +1,7 @@
-import React, {useState} from 'react';
-import {
-  Easing,
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  View,
-  ViewStyle,
-} from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import React from 'react';
+import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 
-import {Text} from '/component/base';
-import {colors} from '/theme';
+import {Option} from './component';
 
 export type OptionButtonsProps = {
   options: Array<{value: string; label: string}>;
@@ -24,19 +15,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  option: {
-    backgroundColor: colors.white,
-    borderRadius: 32,
-    borderWidth: 1,
-    borderColor: colors.greyLight,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  optionSelected: {
-    borderColor: colors.black,
-  },
 });
 
 const OptionButtons: React.FC<OptionButtonsProps> = ({
@@ -45,29 +23,16 @@ const OptionButtons: React.FC<OptionButtonsProps> = ({
   onPressOption,
   style,
 }) => {
-  const [scale, setScale] = useState(1);
-
   return (
     <View style={[styles.container, style]}>
       {options.map(option => (
-        <Animatable.View
+        <Option
           key={option.value}
-          // @ts-expect-error
-          transition="scale"
-          duration={250}
-          easing={Easing.elastic(2)}
-          style={{transform: [{scale}]}}>
-          <Pressable
-            onPressIn={() => setScale(0.94)}
-            onPressOut={() => setScale(1)}
-            onPress={() => onPressOption(option.value)}
-            style={[
-              styles.option,
-              value === option.value && styles.optionSelected,
-            ]}>
-            <Text variant="base">{option.label}</Text>
-          </Pressable>
-        </Animatable.View>
+          value={option.value}
+          label={option.label}
+          onPress={() => onPressOption(option.value)}
+          isSelected={option.value === value}
+        />
       ))}
     </View>
   );

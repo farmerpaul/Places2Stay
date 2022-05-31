@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   carousel: {
     marginHorizontal: -spacing.gutter,
     paddingLeft: spacing.gutter,
+    paddingVertical: 2,
   },
 });
 

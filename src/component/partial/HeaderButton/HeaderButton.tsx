@@ -1,8 +1,9 @@
 import React from 'react';
-import {Platform, Pressable, StyleSheet} from 'react-native';
-import {Icon} from '/component/base';
-import {IconProps} from '/component/base/Icon/Icon';
+import {Platform, StyleSheet} from 'react-native';
+
 import {colors} from '/theme';
+import {Pressable, Icon} from '/component/base';
+import {IconProps} from '/component/base/Icon/Icon';
 
 export type HeaderButtonProps = IconProps & {
   onPress?: () => void;
@@ -13,9 +14,9 @@ const styles = StyleSheet.create({
   pressable: {
     position: 'absolute',
     top: 0,
+    marginTop: Platform.OS === 'android' ? -12 : 0,
     padding: 8,
     backgroundColor: colors.yellow,
-    marginTop: Platform.OS === 'android' ? -12 : 0,
   },
   left: {
     borderBottomRightRadius: 22,
@@ -27,7 +28,10 @@ const styles = StyleSheet.create({
 
 const HeaderButton: React.FC<HeaderButtonProps> = ({onPress, svg, side}) => {
   return (
-    <Pressable onPress={onPress} style={[styles.pressable, styles[side]]}>
+    <Pressable
+      onPress={onPress}
+      scale={0.9}
+      positionStyle={[styles.pressable, styles[side]]}>
       <Icon svg={svg} width={28} height={28} />
     </Pressable>
   );

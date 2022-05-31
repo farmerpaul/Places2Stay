@@ -65,7 +65,6 @@ const FlowHeader: React.FC<FlowHeaderProps> = ({title}) => {
 
   useEffect(() => {
     positionAnim.addListener(({value}) => {
-      console.log('setting', value);
       setPosition(value);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

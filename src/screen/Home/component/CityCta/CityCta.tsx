@@ -2,14 +2,14 @@ import React, {memo} from 'react';
 import {
   Image,
   ImageSourcePropType,
-  Pressable,
   StyleProp,
   StyleSheet,
   View,
   ViewStyle,
 } from 'react-native';
-import {Text} from '/component/base';
+
 import {colors} from '/theme';
+import {Pressable, Text} from '/component/base';
 
 export type CityCtaProps = {
   style?: StyleProp<ViewStyle>;
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: colors.deepYellow,
+    backgroundColor: colors.yellowDeep,
     borderBottomLeftRadius: 8,
   },
   image: {

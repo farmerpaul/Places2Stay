@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  Pressable,
-  StyleSheet,
-  TextInput,
-  TextInputProps,
-  View,
-} from 'react-native';
-import {Icon} from '/component/base';
+import {StyleSheet, TextInput, TextInputProps, View} from 'react-native';
+
 import {colors, spacing} from '/theme';
+import {Icon, Pressable} from '/component/base';
 
 export type SearchInputProps = TextInputProps & {
   value?: string;
@@ -41,12 +36,14 @@ const styles = StyleSheet.create({
     top: 16,
     left: 12,
   },
-  clearButton: {
+  clearButtonPosition: {
     position: 'absolute',
     top: 15,
     right: 15,
+  },
+  clearButton: {
     padding: 3,
-    backgroundColor: colors.deepYellow,
+    backgroundColor: colors.yellowDeep,
     borderRadius: 24,
   },
 });
@@ -72,7 +69,11 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
           color={colors.grey}
         />
         {!!value && (
-          <Pressable onPress={onPressClear} style={styles.clearButton}>
+          <Pressable
+            onPress={onPressClear}
+            scale={0.9}
+            positionStyle={styles.clearButtonPosition}
+            style={styles.clearButton}>
             <Icon
               svg={require('/asset/svg/close.svg')}
               width={22}

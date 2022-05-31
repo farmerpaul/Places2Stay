@@ -77,6 +77,7 @@ const Flexible: React.FC<FlexibleProps> = ({
               {flexDateMonths
                 .map(date =>
                   new XDate()
+                    .setDate(1)
                     .setFullYear(date.year)
                     .setMonth(date.month)
                     .toString('MMMM'),
@@ -90,7 +91,7 @@ const Flexible: React.FC<FlexibleProps> = ({
       </Text>
       <MonthPicker
         months={[...Array(12).keys()].map((_value, i) => {
-          const date = new XDate().addMonths(i);
+          const date = new XDate().setDate(1).addMonths(i);
           return {month: date.getMonth(), year: date.getFullYear()};
         })}
         selectedMonths={flexDateMonths}

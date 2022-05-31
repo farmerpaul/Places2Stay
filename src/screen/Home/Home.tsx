@@ -45,9 +45,8 @@ const styles = StyleSheet.create({
   },
   cityCtaCarousel: {
     paddingBottom: 16,
-  },
-  cityCtaSlide: {
-    left: spacing.gutter,
+    paddingVertical: 2,
+    paddingLeft: spacing.gutter,
   },
   gradient: {
     position: 'absolute',
@@ -148,7 +147,6 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
                 <CityCta
                   imageSource={item.image}
                   title={item.title}
-                  style={styles.cityCtaSlide}
                   imageLabel={item.imageLabel}
                   onPress={() => {
                     // TODO: Timeout used here prevent home screen from being

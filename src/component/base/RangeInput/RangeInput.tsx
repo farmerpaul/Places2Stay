@@ -1,7 +1,7 @@
 import React from 'react';
-import {Pressable, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
-import {Icon, Text} from '/component/base';
+import {Icon, Pressable, Text} from '/component/base';
 import {colors} from '/theme';
 
 export type RangeInputProps = {
@@ -49,22 +49,22 @@ const RangeInput: React.FC<RangeInputProps> = ({
   =================================================== */
   return (
     <View style={styles.container}>
-      <Pressable onPress={onPressRemove}>
+      <Pressable onPress={onPressRemove} scale={0.9}>
         <Icon
           svg={require('/asset/svg/remove.svg')}
-          width="32"
-          height="32"
+          width={32}
+          height={32}
           color={isMinimum() ? colors.muted : colors.black}
         />
       </Pressable>
       <Text variant="base" textAlign="center" style={styles.value}>
         {value}
       </Text>
-      <Pressable onPress={onPressAdd}>
+      <Pressable onPress={onPressAdd} scale={0.9}>
         <Icon
           svg={require('/asset/svg/add.svg')}
-          width="32"
-          height="32"
+          width={32}
+          height={32}
           color={isMaximum() ? colors.muted : colors.black}
         />
       </Pressable>

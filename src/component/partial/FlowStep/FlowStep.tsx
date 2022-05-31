@@ -1,10 +1,10 @@
 import React from 'react';
-import {Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {colors, spacing} from '/theme';
-import {Icon, Text} from '/component/base';
+import {Icon, Pressable, Text} from '/component/base';
 
 export type FlowStepProps = {
   navigation: NativeStackNavigationProp<any>;
@@ -59,12 +59,13 @@ const FlowStep: React.FC<FlowStepProps> = ({
         <Pressable
           onPress={() => navigation.goBack()}
           accessibilityLabel="Close modal"
+          scale={0.9}
           style={styles.backButton}>
           <Icon
             accessibilityElementsHidden
             svg={require('/asset/svg/back.svg')}
-            width={24}
-            height={24}
+            width={28}
+            height={28}
           />
         </Pressable>
         {!!title && (

@@ -1,18 +1,20 @@
 import React from 'react';
-import {Pressable, StyleSheet, View} from 'react-native';
-import {Text} from '/component/base';
+import {GestureResponderEvent, StyleSheet, View} from 'react-native';
+
 import {colors} from '/theme';
+import {Pressable, Text} from '/component/base';
 
 export type TypeButtonProps = {
   title: string;
   description?: string;
   icon: React.ReactElement;
+  isSelected?: boolean;
   onPress: () => void;
+  onPressIn?: (event: GestureResponderEvent) => void;
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
     borderRadius: 8,
     marginVertical: 12,
     padding: 12,
@@ -42,10 +44,20 @@ const TypeButton: React.FC<TypeButtonProps> = ({
   title,
   description = 'Description',
   icon,
+  isSelected = false,
   onPress,
+  onPressIn,
 }) => {
   return (
-    <Pressable onPress={onPress} style={styles.container}>
+    <Pressable
+      onPress={onPress}
+      onPressIn={onPressIn}
+      style={styles.container}
+      colorAnimation={{
+        property: 'backgroundColor',
+        inactive: isSelected ? colors.blueLighter : colors.white,
+        active: colors.blueLighter,
+      }}>
       <View>
         <Text variant="title2" style={styles.title}>
           {title}

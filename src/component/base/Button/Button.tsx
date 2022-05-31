@@ -1,15 +1,8 @@
-import React, {useState} from 'react';
-import {
-  Easing,
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  ViewStyle,
-} from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import React from 'react';
+import {StyleProp, StyleSheet, ViewStyle} from 'react-native';
 
 import {colors} from '/theme';
-import {Text} from '/component/base';
+import {Pressable, Text} from '/component/base';
 
 export type ButtonProps = {
   label: string;
@@ -46,25 +39,12 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   style,
 }) => {
-  const [scale, setScale] = useState(1);
-
   return (
-    <Animatable.View
-      // @ts-expect-error
-      transition="scale"
-      duration={250}
-      easing={Easing.elastic(2)}
-      style={{transform: [{scale}]}}>
-      <Pressable
-        onPressIn={() => setScale(0.94)}
-        onPressOut={() => setScale(1)}
-        onPress={onPress}
-        style={[styles.base, styles[variant], style]}>
-        <Text variant="base" textAlign="center" style={textStyles[variant]}>
-          {label}
-        </Text>
-      </Pressable>
-    </Animatable.View>
+    <Pressable onPress={onPress} style={[styles.base, styles[variant], style]}>
+      <Text variant="base" textAlign="center" style={textStyles[variant]}>
+        {label}
+      </Text>
+    </Pressable>
   );
 };
 

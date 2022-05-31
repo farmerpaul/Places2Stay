@@ -11,7 +11,6 @@
 		047BAFCA63A1401684EA593D /* Bitter-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB2B42892E2A4FCB8D9F30D8 /* Bitter-MediumItalic.ttf */; };
 		05D3F6D8325E4BE6B07A1334 /* EncodeSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E42851C35106450DA23CD11E /* EncodeSans-Regular.ttf */; };
 		06209888B19E496EA4E65DEB /* EncodeSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D803C936DB0C48E2AD2F6C93 /* EncodeSans-Bold.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-Places2Stay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Places2Stay.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -23,10 +22,10 @@
 		47C39600B3484A1DB824F059 /* EncodeSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0047797B19BE47E79B739A83 /* EncodeSans-Light.ttf */; };
 		51B021920BE74EEAB2DC0184 /* Bitter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAB02652B89A44BB93C6A6E5 /* Bitter-Medium.ttf */; };
 		63900F16FEA44B95A9F636F8 /* Bitter-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B750296E763549FCBB54393D /* Bitter-LightItalic.ttf */; };
+		659324DF7AA3D33D88C4140B /* libPods-Places2Stay-Places2StayTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED32F5C7BE3079B80E01293 /* libPods-Places2Stay-Places2StayTests.a */; };
 		670AB37B438B4232830F17D9 /* EncodeSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE1DF15163B4455B06AC5A1 /* EncodeSans-Medium.ttf */; };
 		68D149977EAD47E8ADFD0CF4 /* EncodeSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E4BA7D2A2CF4E578ABAC4BA /* EncodeSans-ExtraBold.ttf */; };
 		74DF75AC48B54F74B714D385 /* Bitter-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2CE3B06B2D14D2B85C1E00E /* Bitter-ExtraBoldItalic.ttf */; };
-		7699B88040F8A987B510C191 /* libPods-Places2Stay-Places2StayTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Places2Stay-Places2StayTests.a */; };
 		7F390F5B2A33465F82DD2A7E /* Bitter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60CC79D1856E40799505F1C5 /* Bitter-SemiBold.ttf */; };
 		815C1E437D844A23B586C95B /* Bitter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE8C3E3BBA3F406D833332EC /* Bitter-Black.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -40,6 +39,7 @@
 		C05E1737F8954076BB586560 /* Bitter-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45ACB5C444294AF2BC1C219B /* Bitter-ExtraLightItalic.ttf */; };
 		C84C2A6483E4A85345113E23 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168236C004399C9F7FE605F2 /* ExpoModulesProvider.swift */; };
 		DC4BD1E84CC31B51A20103AF /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67E9CC556B39911166C4AC1 /* ExpoModulesProvider.swift */; };
+		DCF785924ABAF82B1FD55DE8 /* libPods-Places2Stay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A48E500A9B6BA9BA06D744 /* libPods-Places2Stay.a */; };
 		E64EB66922EB4E3C837F6B68 /* EncodeSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85F1B159F0674D78A8599F35 /* EncodeSans-Black.ttf */; };
 		E6F9F9F8EE934418912739E4 /* EncodeSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCEFB988D62D479C99975A3A /* EncodeSans-Thin.ttf */; };
 		EEFB498D607F41A9B79A216C /* EncodeSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A0F0911370442C6999F0F91 /* EncodeSans-ExtraLight.ttf */; };
@@ -68,26 +68,24 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Places2Stay/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Places2Stay/main.m; sourceTree = "<group>"; };
 		168236C004399C9F7FE605F2 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Places2Stay-Places2StayTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Places2Stay-Places2StayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Places2Stay-Places2StayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD34030B535415F9846F71F /* Bitter-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Italic.ttf"; path = "../src/asset/fonts/Bitter-Italic.ttf"; sourceTree = "<group>"; };
 		1F938AEC06024399AE393C60 /* Bitter-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-SemiBoldItalic.ttf"; path = "../src/asset/fonts/Bitter-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		288F18EAA75D4039B7D822D3 /* Bitter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Bold.ttf"; path = "../src/asset/fonts/Bitter-Bold.ttf"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-Places2Stay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay.debug.xcconfig"; path = "Target Support Files/Pods-Places2Stay/Pods-Places2Stay.debug.xcconfig"; sourceTree = "<group>"; };
+		39F328009DC170D6524EA48B /* Pods-Places2Stay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay.release.xcconfig"; path = "Target Support Files/Pods-Places2Stay/Pods-Places2Stay.release.xcconfig"; sourceTree = "<group>"; };
+		3ED32F5C7BE3079B80E01293 /* libPods-Places2Stay-Places2StayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Places2Stay-Places2StayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45ACB5C444294AF2BC1C219B /* Bitter-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-ExtraLightItalic.ttf"; path = "../src/asset/fonts/Bitter-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		4EFF6F705246409E942D18F7 /* Bitter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Thin.ttf"; path = "../src/asset/fonts/Bitter-Thin.ttf"; sourceTree = "<group>"; };
 		506E34A341534280BE78518C /* Bitter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Light.ttf"; path = "../src/asset/fonts/Bitter-Light.ttf"; sourceTree = "<group>"; };
 		5236575A4F414268ADC2AC9E /* Bitter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Regular.ttf"; path = "../src/asset/fonts/Bitter-Regular.ttf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-Places2Stay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay.release.xcconfig"; path = "Target Support Files/Pods-Places2Stay/Pods-Places2Stay.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-Places2Stay-Places2StayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay-Places2StayTests.debug.xcconfig"; path = "Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-Places2Stay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Places2Stay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CC79D1856E40799505F1C5 /* Bitter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-SemiBold.ttf"; path = "../src/asset/fonts/Bitter-SemiBold.ttf"; sourceTree = "<group>"; };
 		6F54A0584C304D3FAC133B93 /* Bitter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-ExtraBold.ttf"; path = "../src/asset/fonts/Bitter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		78A48E500A9B6BA9BA06D744 /* libPods-Places2Stay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Places2Stay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0F0911370442C6999F0F91 /* EncodeSans-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-ExtraLight.ttf"; path = "../src/asset/fonts/EncodeSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Places2Stay/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85F1B159F0674D78A8599F35 /* EncodeSans-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-Black.ttf"; path = "../src/asset/fonts/EncodeSans-Black.ttf"; sourceTree = "<group>"; };
 		89A928E1F8B7408EA723C61D /* Bitter-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-ThinItalic.ttf"; path = "../src/asset/fonts/Bitter-ThinItalic.ttf"; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-Places2Stay-Places2StayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay-Places2StayTests.release.xcconfig"; path = "Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E4BA7D2A2CF4E578ABAC4BA /* EncodeSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-ExtraBold.ttf"; path = "../src/asset/fonts/EncodeSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		9371B52160EF70DA47699BCF /* Pods-Places2Stay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay.debug.xcconfig"; path = "Target Support Files/Pods-Places2Stay/Pods-Places2Stay.debug.xcconfig"; sourceTree = "<group>"; };
 		B750296E763549FCBB54393D /* Bitter-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-LightItalic.ttf"; path = "../src/asset/fonts/Bitter-LightItalic.ttf"; sourceTree = "<group>"; };
 		BAB02652B89A44BB93C6A6E5 /* Bitter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-Medium.ttf"; path = "../src/asset/fonts/Bitter-Medium.ttf"; sourceTree = "<group>"; };
 		BCC477CE8B924E04B6753F31 /* Bitter-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-BlackItalic.ttf"; path = "../src/asset/fonts/Bitter-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -102,6 +100,8 @@
 		E42851C35106450DA23CD11E /* EncodeSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EncodeSans-Regular.ttf"; path = "../src/asset/fonts/EncodeSans-Regular.ttf"; sourceTree = "<group>"; };
 		E92D7748B28D4784BBFECB4A /* Bitter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bitter-ExtraLight.ttf"; path = "../src/asset/fonts/Bitter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F770E1F32FFD823B5F0B093E /* Pods-Places2Stay-Places2StayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay-Places2StayTests.release.xcconfig"; path = "Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests.release.xcconfig"; sourceTree = "<group>"; };
+		FFA1E1DB69784D8A9257AC65 /* Pods-Places2Stay-Places2StayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places2Stay-Places2StayTests.debug.xcconfig"; path = "Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-Places2Stay-Places2StayTests.a in Frameworks */,
+				659324DF7AA3D33D88C4140B /* libPods-Places2Stay-Places2StayTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-Places2Stay.a in Frameworks */,
+				DCF785924ABAF82B1FD55DE8 /* libPods-Places2Stay.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,8 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-Places2Stay.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Places2Stay-Places2StayTests.a */,
+				78A48E500A9B6BA9BA06D744 /* libPods-Places2Stay.a */,
+				3ED32F5C7BE3079B80E01293 /* libPods-Places2Stay-Places2StayTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,10 +251,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-Places2Stay.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-Places2Stay.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-Places2Stay-Places2StayTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-Places2Stay-Places2StayTests.release.xcconfig */,
+				9371B52160EF70DA47699BCF /* Pods-Places2Stay.debug.xcconfig */,
+				39F328009DC170D6524EA48B /* Pods-Places2Stay.release.xcconfig */,
+				FFA1E1DB69784D8A9257AC65 /* Pods-Places2Stay-Places2StayTests.debug.xcconfig */,
+				F770E1F32FFD823B5F0B093E /* Pods-Places2Stay-Places2StayTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -274,12 +274,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Places2StayTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				B3FA17FB41F6E16211FF1955 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				45F936D217877FD065E7C88D /* [CP] Embed Pods Frameworks */,
+				8F61CCE1B141ACCE83DC1E8E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,14 +295,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Places2Stay" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				9F40128BF8B36A39EA1120C5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				1E9D4062E9A0DA513DC44950 /* [CP] Embed Pods Frameworks */,
+				6BC9ABD8A6F1BEEFBD18BB57 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,7 +410,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		1E9D4062E9A0DA513DC44950 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,29 +427,58 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		45F936D217877FD065E7C88D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Places2Stay-Places2StayTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		6BC9ABD8A6F1BEEFBD18BB57 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F61CCE1B141ACCE83DC1E8E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F40128BF8B36A39EA1120C5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -471,55 +500,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		B3FA17FB41F6E16211FF1955 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Places2Stay-Places2StayTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay/Pods-Places2Stay-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places2Stay-Places2StayTests/Pods-Places2Stay-Places2StayTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -576,7 +576,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Places2Stay-Places2StayTests.debug.xcconfig */;
+			baseConfigurationReference = FFA1E1DB69784D8A9257AC65 /* Pods-Places2Stay-Places2StayTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -604,7 +604,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Places2Stay-Places2StayTests.release.xcconfig */;
+			baseConfigurationReference = F770E1F32FFD823B5F0B093E /* Pods-Places2Stay-Places2StayTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -629,7 +629,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Places2Stay.debug.xcconfig */;
+			baseConfigurationReference = 9371B52160EF70DA47699BCF /* Pods-Places2Stay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -657,7 +657,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Places2Stay.release.xcconfig */;
+			baseConfigurationReference = 39F328009DC170D6524EA48B /* Pods-Places2Stay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

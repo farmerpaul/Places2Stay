@@ -1,13 +1,13 @@
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {Pressable, StyleSheet, TextInput} from 'react-native';
+import {StyleSheet, TextInput} from 'react-native';
 
-import {Icon, Text} from '/component/base';
+import {colors} from '/theme';
+import {Icon, Pressable, Text} from '/component/base';
 import {FlowStep, SearchInput} from '/component/partial';
 import {PlacesFilterContext} from '/context';
 import searchMockData from '/fixtures/search';
-import {colors} from '/theme';
 
 export type SearchCitiesProps = {
   route: RouteProp<any>;
@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 6,
+    padding: 8,
+    borderRadius: 8,
+    marginHorizontal: -8,
   },
   optionIcon: {
     marginRight: 8,
@@ -94,7 +96,12 @@ const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
         <Pressable
           key={option}
           onPress={() => onSelectItem(option)}
-          style={styles.option}>
+          style={styles.option}
+          colorAnimation={{
+            property: 'backgroundColor',
+            inactive: colors.yellow,
+            active: colors.blueGrey,
+          }}>
           <Icon
             svg={require('/asset/svg/map-marker.svg')}
             color={colors.blue}
