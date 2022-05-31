@@ -49,7 +49,7 @@ const RangeInput: React.FC<RangeInputProps> = ({
   =================================================== */
   return (
     <View style={styles.container}>
-      <Pressable onPress={onPressRemove} scale={0.9}>
+      <Pressable onPress={onPressRemove} scale={0.9} disabled={isMinimum()}>
         <Icon
           svg={require('/asset/svg/remove.svg')}
           width={32}
@@ -60,7 +60,7 @@ const RangeInput: React.FC<RangeInputProps> = ({
       <Text variant="base" textAlign="center" style={styles.value}>
         {value}
       </Text>
-      <Pressable onPress={onPressAdd} scale={0.9}>
+      <Pressable onPress={onPressAdd} scale={0.9} disabled={isMaximum()}>
         <Icon
           svg={require('/asset/svg/add.svg')}
           width={32}

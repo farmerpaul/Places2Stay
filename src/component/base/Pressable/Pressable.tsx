@@ -35,6 +35,7 @@ export type PressableProps = RNPressableProps & {
     | EntryExitAnimationFunction
     | Keyframe
     | undefined;
+  disabled?: boolean;
 };
 
 const Pressable: React.FC<PressableProps> = ({
@@ -47,6 +48,7 @@ const Pressable: React.FC<PressableProps> = ({
   children,
   entering,
   exiting,
+  disabled = false,
   ...props
 }) => {
   const shared = useSharedValue(1);
@@ -92,7 +94,7 @@ const Pressable: React.FC<PressableProps> = ({
   return (
     <RNPressable
       onPressIn={event => {
-        shared.value = 0;
+        !disabled && (shared.value = 0);
         onPressIn?.(event);
       }}
       onPressOut={event => {
