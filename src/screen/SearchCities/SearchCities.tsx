@@ -87,6 +87,7 @@ const SearchCities: React.FC<SearchCitiesProps> = ({navigation}) => {
         ref={inputRef}
         value={searchText}
         onChangeText={setSearchText}
+        onPressClear={() => setSearchText('')}
         style={styles.searchInput}
       />
       <Text variant="title" style={styles.title}>

@@ -101,12 +101,15 @@ const Pressable: React.FC<PressableProps> = ({
       }}
       style={positionStyle}
       {...props}>
-      <Animated.View
-        entering={entering}
-        exiting={exiting}
-        style={[animStyle, style]}>
-        {children}
-      </Animated.View>
+      {entering || exiting ? (
+        // Entering transition conflicts with animated opacity above, so break
+        // up animations using two separate Animated.Views.
+        <Animated.View entering={entering} exiting={exiting}>
+          <Animated.View style={[animStyle, style]}>{children}</Animated.View>
+        </Animated.View>
+      ) : (
+        <Animated.View style={[animStyle, style]}>{children}</Animated.View>
+      )}
     </RNPressable>
   );
 };

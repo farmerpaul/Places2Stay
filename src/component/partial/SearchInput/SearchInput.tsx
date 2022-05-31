@@ -3,6 +3,7 @@ import {StyleSheet, TextInput, TextInputProps, View} from 'react-native';
 
 import {colors, spacing} from '/theme';
 import {Icon, Pressable} from '/component/base';
+import {FadeIn, FadeOut} from 'react-native-reanimated';
 
 export type SearchInputProps = TextInputProps & {
   value?: string;
@@ -73,7 +74,9 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
             onPress={onPressClear}
             scale={0.9}
             positionStyle={styles.clearButtonPosition}
-            style={styles.clearButton}>
+            style={styles.clearButton}
+            entering={FadeIn.duration(300)}
+            exiting={FadeOut.duration(300)}>
             <Icon
               svg={require('/asset/svg/close.svg')}
               width={22}
