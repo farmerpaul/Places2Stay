@@ -51,9 +51,13 @@ const Pressable: React.FC<PressableProps> = ({
 }) => {
   const shared = useSharedValue(1);
 
+  /* Set up animated styles.
+  =================================================== */
   const animStyle = useAnimatedStyle(() => ({
     transform: [
       {
+        // Use spring effect for scale when releasing the press, otherwise
+        // use standard easing.
         scale:
           shared.value === 0
             ? withTiming(interpolate(shared.value, [0, 1], [scale, 1]), {
@@ -66,9 +70,11 @@ const Pressable: React.FC<PressableProps> = ({
               }),
       },
     ],
+    // Use standard easing for opacity/fade.
     opacity: withTiming(interpolate(shared.value, [0, 1], [0.8, 1]), {
       duration: 200,
     }),
+    // Add an animated color property if requested.
     ...(colorAnimation && {
       [colorAnimation.property]: withTiming(
         interpolateColor(
@@ -81,6 +87,8 @@ const Pressable: React.FC<PressableProps> = ({
     }),
   }));
 
+  /* Render component.
+  =================================================== */
   return (
     <RNPressable
       onPressIn={event => {

@@ -32,11 +32,13 @@ const linking = {
     screens: {
       HomeTabs: {
         screens: {
+          Home: 'home',
           Stay: 'stay',
         },
       },
       SearchStack: {
         screens: {
+          SearchCities: 'search',
           FilterByType: 'search/:city',
         },
       },
