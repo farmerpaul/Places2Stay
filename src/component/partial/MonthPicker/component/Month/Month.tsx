@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
 
 const Month: React.FC<MonthProps> = memo(
   ({month, year, isSelected = false, onPress, style}) => {
+    /* Define animation value and style.
+    =================================================== */
     const borderColor = useDerivedValue(
       () => (isSelected ? colors.black : colors.silver),
       [isSelected],
@@ -47,6 +49,8 @@ const Month: React.FC<MonthProps> = memo(
       borderColor: withTiming(borderColor.value, {duration: 200}),
     }));
 
+    /* Render component.
+    =================================================== */
     return (
       <Pressable onPress={onPress} style={[styles.container, animStyle, style]}>
         <Icon svg={require('/asset/svg/month.svg')} width={32} height={32} />
