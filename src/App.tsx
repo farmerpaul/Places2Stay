@@ -8,13 +8,14 @@
  */
 
 // Workaround for deprecation notices in react-native-snap-carousel module:
-import {LogBox} from 'react-native';
+import {Alert, LogBox} from 'react-native';
 LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
 // ... end workaround.
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import messaging from '@react-native-firebase/messaging';
 
 import {HomeTabs, SearchStack} from '/component/navigator';
 import {
@@ -53,6 +54,18 @@ const App = () => {
   const [availability, setAvailability] = useState<Availability>();
   const [guests, setGuests] = useState<Guests>();
 
+  /* Effects.
+  =================================================== */
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
+
+  /* Render app.
+  =================================================== */
   return (
     <PlacesFilterProvider
       value={{

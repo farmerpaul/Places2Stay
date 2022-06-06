@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "417262292155",
+    "project_id": "places2stay-2991a",
+    "storage_bucket": "places2stay-2991a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417262292155:android:0a457aefef662b2f346d9e",
+        "android_client_info": {
+          "package_name": "com.places2stay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417262292155-69qb6kvhag26dh4u3hdtghhebq7pqbhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPyVXYSyrs9w3oXkToDogJq00l4VWyFnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417262292155-69qb6kvhag26dh4u3hdtghhebq7pqbhe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "417262292155-j9tsdfmrbhlfbi39g7rvt0nd8ucnv2hb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.farmerpaul.Places2Stay"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
